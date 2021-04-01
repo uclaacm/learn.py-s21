@@ -2,7 +2,7 @@
 
 ## Welcome to learn<span>.</span>py!
 
-Python is the world's most popular programming language, and for good reason! It is elegant, concise, and capable of creating extremely powerful programs. As it's the language of choice for countless fields, learning Python will allow you to branch out to virtually *any* industry you want in positions beyond just software development! That's why we at Hack believe every UCLA student interested in Computer Science should learn it! 
+Python is the world's most popular programming language, and for good reason! It is elegant, concise, and capable of creating extremely powerful programs. As it's the language of choice for countless fields, learning Python will allow you to branch out to virtually *any* industry you want in positions beyond just software development! That's why we at Hack believe every UCLA student interested in Computer Science should learn it. 
 
 learn<span>.</span>py is a weekly workshop series dedicated to teaching Python in an entertaining way as well as exploring some of its fun applications! Live workshops will be taking place every Wednesday from 6-8 PM PST and recordings will be posted to the [ACM YouTube channel](https://www.youtube.com/channel/UCwTqwgA4thysNbB2kNYsCIw). 
 
