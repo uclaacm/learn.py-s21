@@ -19,9 +19,9 @@ learn<span>.</span>py is a weekly workshop series dedicated to teaching Python i
 
 ## Essential Links
 
-- [Hack website](https://hack.uclaacm.com/)
-- [ACM website](https://www.uclaacm.com/)
-- [ACM membership portal](https://members.uclaacm.com/)
+- [Hack Website](https://hack.uclaacm.com/)
+- [ACM Website](https://www.uclaacm.com/)
+- [ACM Membership Portal](https://members.uclaacm.com/)
 
 ## Additional Learning
 - [Official Tutorial](https://docs.python.org/3/tutorial/)
