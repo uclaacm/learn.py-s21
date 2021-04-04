@@ -125,7 +125,7 @@ if anyone_can_cook:
     print("r a t")
 else:
     if not_everyone_but_rats_can: 
-            print("r a t !!")
+        print("r a t !!")
     else: 
         print("m a n")
 ```
