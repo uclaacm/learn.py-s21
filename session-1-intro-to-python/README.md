@@ -300,7 +300,7 @@ print(get_list(5)) #get a list with 5 values
 > - as the range is iterated over, its value is provided as an argument to the get_input function
 > - notice how we never call the get_input function ourselves, it's called by the map function
 
-This is case where using an anonymous function could be very convenient. The syntax for a lambda expression is as follows:
+This is a case where using an anonymous function could be very convenient. The syntax for a lambda expression is as follows:
 
 ```python
 lambda i: i * 2 # a lambda that takes in a value and returns twice the value
@@ -318,6 +318,8 @@ print(get_list(5))
 ```
 
 Woah! Very concise. As you proceed with Python, you'll begin to appreciate just how much you can do in a single line, it's honestly kinda crazy (you can even go a bit too far, so take care in making sure your code is readable too!)
+
+Next time we'll go over a much cleaner way of handling behaviour like this (called list comprehension), so don't worry if this is confusing to you.
 
 ## Wrapup
 Alright, that was a ton of information! I encourage you to go back and reread sections that were confusing, and if you still don't get it feel free to reach out! We're always happy to help on the ACM discord :)
