@@ -245,12 +245,11 @@ def keywords(**kwargs):
         print(f"{key}: {kwargs[key]}")
 
 keywords(key="lock", dir="ection", lo="down")
-"""
-prints:
-    key: lock
-    dir: ection
-    lo: down
-"""
+
+# prints:
+#    key: lock
+#    dir: ection
+#    lo: down
 ```
 
 ### Lambdas
