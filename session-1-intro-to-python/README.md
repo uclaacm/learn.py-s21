@@ -78,7 +78,7 @@ print("I love it.")
 ### Quick Aside on Boolean Conditions
 The statement following the `if` keyword is evaluated in exactly the same way as in other languages. If it evaluates to `True` (notice the capitalization), then the body of the conditional will be executed. If `False`, then it won't be. In Python, non-empty collections and numeric values that are not 0 are evaluated as True. All other values are False. See the table below for reference.
 
-| | Truthy | Falsey |
+| | Truthy | Falsy |
 |-|--------|--------|
 | True |   x     |      |
 | False |        |   x   |
