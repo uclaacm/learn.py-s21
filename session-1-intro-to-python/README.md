@@ -279,7 +279,7 @@ transform_by(some_func, 3)
 
 ### Motivation for Lambdas
 
-Sometimes it becomes convenient create anonymous functions (i.e small functions that don't have a name) and pass those around instead of doing the whole declaration. To showcase this, let me introduce the `map` function.
+Sometimes it becomes convenient to create anonymous functions (i.e small functions that don't have a name) and pass those around instead of doing the whole declaration. To showcase this, let me introduce the `map` function.
 
 `map` takes as input a function and some iterable object. It returns a list where each item in the iterable object has been given as input to the function and the return value has been placed in the list. This can be quite confusing so let's take a look at an example.
 
@@ -302,7 +302,7 @@ print(get_list(5)) #get a list with 5 values
 This is a case where using an anonymous function could be very convenient. The syntax for a lambda expression is as follows:
 
 ```python
-lambda i: i * 2 # a lambda that takes in a value and returns twice the value
+lambda i, j: i + j # a lambda that takes in two value and returns sum
 ```
 
 > Note: An important limitation of lambdas to keep in mind is that they are restricted to single expressions for their return values. This means they can only be used for small functions as shown above!
