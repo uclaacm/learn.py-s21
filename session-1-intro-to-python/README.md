@@ -37,8 +37,7 @@
     - default arguments
     - keyword vs positional arguments
     - arbitrary argument lists
-    - lambdas
-    - map
+    - first class functions
 
 ## Conditionals
 If you've seen conditionals in other languages, conditionals in Python won't surprise you. Keeping with the theme of the language, though, there are a couple differences designed to make your life easier!
@@ -166,11 +165,15 @@ for word in ["anyone", "can", "cook"]:
 ```
 As you can tell, for loops in Python read a lot more like actual English, which, as we progress, you'll notice is a running theme of the language. Python's for statement will iterate over the items of a sequence/collection (which we'll define later on but for now it's sufficient to know they're simply container types) in the order that they appear. 
 
-This decision to limit for loops to iteration makes some things a lot more convenient and some things less convenient. For example, how can we easily iterate through a range of numbers? Well, you could just use a while loop. If you wanted to use a for loop, however, you would need to use `range()`.
+This decision to limit for loops to iteration makes some things a lot more convenient and some things less convenient. For example, how can we easily iterate through a range of numbers or execute a statement a particular number of times? Well, you could just use a while loop. If you wanted to use a for loop, however, you would need to use `range()`.
 
 ```python
 for num in range(10):
-    print(num)
+    print(num) # prints sequence from 0 to 9
+
+for num in range(20, 10, -2):
+    print(num) #prints even numbers from 20 to 12
+
 ```
 
 Just like a list, range is a sequence type that allows you to iterate over some specified range of numbers. 
@@ -237,22 +240,7 @@ concat() # returns ""
 
 > Note: the `sep` argument is called a keyword-only argument because it can only be specified in a function call by its keyword. All arugments following an arbitrary list argument are keyword-only argmuments. Otherwise, how would Python know which argument the parameter belongs to?
 
-You can also allow for an arbitrary number of keyword arguments (represented as a dictionary) using **.
-
-```python
-def keywords(**kwargs):
-    for key in kwargs:
-        print(f"{key}: {kwargs[key]}")
-
-keywords(key="lock", dir="ection", lo="down")
-
-# prints:
-#    key: lock
-#    dir: ection
-#    lo: down
-```
-
-### Lambdas
+### First Class Functions
 In Python, functions are known as first class objects meaning they can be assigned to variables and passed as arguments to other functions. 
 
 For example the following code is valid:
@@ -276,49 +264,6 @@ def some_func(i):
 
 transform_by(some_func, 3)
 ```
-
-### Motivation for Lambdas
-
-Sometimes it becomes convenient to create anonymous functions (i.e small functions that don't have a name) and pass those around instead of doing the whole declaration. To showcase this, let me introduce the `map` function.
-
-`map` takes as input a function and some iterable object. It returns a list where each item in the iterable object has been given as input to the function and the return value has been placed in the list. This can be quite confusing so let's take a look at an example.
-
-```python
-def get_input(a):
-    return input(f"{a}: ")
-
-# creates a list of specified size based on user input
-def get_list(size):
-    return list(map(get_input, range(1, size + 1)))
-
-print(get_list(5)) #get a list with 5 values
-```
-
-> A Couple Notes:
-> - in python 3, `map` returns a map object (which is why we cast it to list)
-> - as the range is iterated over, its value is provided as an argument to the get_input function
-> - notice how we never call the get_input function ourselves, it's called by the map function
-
-This is a case where using an anonymous function could be very convenient. The syntax for a lambda expression is as follows:
-
-```python
-lambda i, j: i + j # a lambda that takes in two value and returns sum
-```
-
-> Note: An important limitation of lambdas to keep in mind is that they are restricted to single expressions for their return values. This means they can only be used for small functions as shown above!
-
-Let's update our example from before to use a lambda.
-
-```python
-def get_list(size):
-    return list(map(lambda a : input(f"{a}: "), range(1, size + 1))
-
-print(get_list(5))
-```
-
-Woah! Very concise. As you proceed with Python, you'll begin to appreciate just how much you can do in a single line, it's honestly kinda crazy (you can even go a bit too far, so take care in making sure your code is readable too!)
-
-Next time we'll go over a much cleaner way of handling behaviour like this (called list comprehension), so don't worry if this is confusing to you.
 
 ## Wrapup
 Alright, that was a ton of information! I encourage you to go back and reread sections that were confusing, and if you still don't get it feel free to reach out! We're always happy to help on the ACM discord :)
