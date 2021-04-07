@@ -12,33 +12,240 @@
 - [ACM Membership Attendance Portal](https://members.uclaacm.com/login)
 
 ## What we'll be learning today
-- TBD
-- Interpreted vs Compiled Languages
-- Variables
-    - weak vs strong typing
-    - type inference
-    - type casting
-- I/O
-    - print
-    - input
-    - format strings
+- [Downloading Python & Using the interpreter](#Downloading%20Python%20&%20Using%20The%20Interpreter)
+- [Variables](#Variables)
+    - Numbers and Math operations
+    - Strings, String Operations, and Escape Sequences
+    - print() and input()
+    - Lists and Basic List Operations
+    - Mutability of Variables
 - [Conditionals](#conditionals)
-    - booleans, operators
-    - white space
+    - Booleans, Operators
+    - White space
 - [Loops](#loops)
     - while
     - for
-        - containers
-        - range
+        - Containers
+        - Range
 - [Functions](#functions)
-    - parameters by value/reference
+    - Parameters by value/reference
     - None
-    - documentation
-    - default arguments
-    - keyword vs positional arguments
-    - arbitrary argument lists
-    - first class functions
+    - Documentation
+    - Default arguments
+    - Keyword vs positional arguments
+    - Arbitrary argument lists
+    - First class functions
 
+> Note: This workshop series is designed with the assumption that attendees have taken CS31/PIC10A, or any of its equivalents. While we will go through the basics of Python, we do not explain all the details and fundamentals. Rather, we are showing how to what you have previously done, but within Python.
+
+## Downloading Python & Using the interpreter
+What exactly is Python? There are many technical definitions for programming languages, we may define it simply. Python is one of the world's fastest growing languages amongst many audiences, not just software developers! It's highly applicable, as it is great for many tasks other than creating software, such as data analysis, AI/ML (Artificial Intelligence/Machine Learning), and automation (which, hint hint, will be in a future workshop!).
+
+Why exactly do we use Python over other languages? Python is great for solving large, complex problems with simpler and fewer lines of code. Of course, as the problems get more complex, it requires more knowledge of Python, but in general there are some problems that can simply done in shorter lines of code (i.e. as we'll see later, the infamouse first "Hello, World" code!). Additionally, Python is cross-platform, meaning you can create and run Python application on any device! Lastly, Python syntax (coding style and convention) is a lot simplier,  relying on whitespace, which we'll learn later on in this workshop. If you've used a language such as C++ before, you may be familiar with the use of semicolons and curly braces. Python doesn't use any of that! How convenient!
+
+Getting started with Python requires downloading Python. Visit [this site](www.python.org/downloads/). You will see a large yellow "Download Python" button. IF you are on Windows, click this button. Otherwise, there are links immediately below for your particular operating system (you may need to do this for certain versions of Windows, but it is likely that the main button will be sufficient, unless you are on a legacy version of Windows, for example).
+
+![Python download page](downloadpy.png)
+
+It's required to download Python in order to have the ability to compile Python code. In order to test and experiment code, you may use the Python interpreter or IDLE. While IDLE has more capabilities, for our purposes we will view them as working similarly. IDLE is Python's Integrated Development and Learning Environment. Both the interpreter and IDLE run under a process known as REPL (Read, Evaluate, Print, Loop). The Python code is read, evaluated, the result is printed on the screen, then the interpretter loops agin to read the next line of inputted code. Don't worry about the specifics at this point, though it does get quite useful for your other possible future Python uses, so we'll be demonstrating some concepts in here to get you familiar with it. For now, think of it like the console in the browser, if you've ever used the console for messing with JavaScript.
+
+To use the interpreter, you type: \
+    - `py` on Windows \
+    - `python3` on MacOS
+
+To use IDLE, on Windows you can search it within your start menu, or if you're on MacOS, type `idle3`.
+
+## Variables
+If you've coded in other languages, you will most likely be familiar with variables. There are some similarities within Python to other languages, as well as differences.
+
+Variables are a space in memory that have a certain given value. We give it a name to retrieve its value. For example, `remy = 'chef'` is an example of a *string* which we'll dive into in a little bit. It is similar to other languages in that we have a variable name, a value, and we use `=` as our assignment operator (giving the variable a value). 
+
+You always want to have meaningful names for your variables. For example, if I were making a game and wanted to make a character called Remy, like on the previous slide, I wouldn’t want to name him “rat1”, because it would be hard to know who it was referring to!
+
+
+Compared to C++, for example, you do not specify the type of the variable name, as it can be changed later on. This is another reason to have meaningful variable names.
+
+There are many types of variables, but the ones we will cover today are: \
+    - Numbers \
+    - Strings \
+    - Lists \
+    - Boolean
+
+**Numbers**: There are two types of numbers, int and float. int / integer represents whole numbers, while float represents decimals. Compared to C++, there are no doubles, longs, or shorts.
+
+Examples of int are:
+```python
+    num_friends = 0
+    sheep_counted = 4326
+```
+
+Examples of float are:
+```python
+    my_gpa = 1.74
+    threefourths = 0.75
+```
+
+There is a host of different mathematical / arithmetic operations that can be applied to numbers in Python.
+
+- Addition and Subtraction = `+     -`
+
+- Multiplication and Decimal Division = `*     /`
+
+- Floored/Integer Division = `//`
+
+- Exponentiation = `**`
+
+- Modulus (Remainder of division) = `%`
+
+
+
+**Strings**: Strings can be a single letter, words, sentences, or big blocks of text. You can use either 'string quotes' or "double quotes" for single line strings. For multi line stringls, you may use triple single or triple double quotes.
+
+```python
+single_quote_string = 'Single quotes are better!'
+
+double_quote_string = "No, double quotes are better!"
+
+multi_line_string = '''Imagine
+                       only using
+                       one line.'''
+```
+
+Strings can be concatenated (glued together) using the + operator, or by simply being put next to each other! \
+`'I like ' + 'Python'  =>  ‘I like Python’` \
+`'I like ' 'Python'  =>  ‘I like Python’` 
+- This is called implicit concatenation!
+
+You may also repeat the same string using the `*` operator. \
+`3 * 'Hacc Squad'  =>  'Hacc SquadHacc SquadHacc Squad'`
+
+
+
+**Escape Characters**: What if we wanted to put some speech inside of a string? \
+`rat_quotes = 'As Remy says, 'Change is nature'.'` \
+This would give us an error!
+
+Instead, we can use the escape character to put in these special characters. We use a backslash (`\`) to do so. \
+`rat_quotes = 'As Remy says, \'Change is nature\'.'` \
+Without this, Python will read until the next single-quote, which is right before "Change", and will see that there is incorrect syntax following the string, and throw an error!
+
+There are many special characters that require an escape character, such as:
+- `\n`  =>  New line
+
+- `\t`   =>  Tab
+
+- `\\`  =>  Backslash within a string as text
+
+Without the backslash, these texts would be read literally rather than with our intended character.
+
+**Basic Input and Output**: The simplest way to display some text on the screen is with print()! \
+`print('Hello')`  =>  Hello \
+`print(06292007)`  =>  06292007 \
+You can pass any value and any variable to print!
+
+This is where Python shines. While in C++, you may have had to write multiple lines just to print "Hello, World!", like so:
+
+```c++
+#include <iostream>
+
+int main()
+{
+    std::cout << "Hello, World!" << std::endl;
+    return 0;
+}
+```
+
+While in Python, we can just do the following:
+
+```python
+print("Hello, World!")
+```
+
+How convenient!
+
+
+Asking for input works simply as well! The general format works as the following: \
+`var_name = input("Some sort of prompt")`
+
+The user then gets the prompt on the screen, and will be asked to input something. All input is stored as a **string**. `var_name` now stores whatever the user entered!
+You may also leave input blank, but it is helpful to leave some message for users to know what you ask, otherwise it may be ambiguous what kind of input you are looking for.
+
+
+**Lists**: Similar to an array in C++, a list is a group of ordered values. You can put different types into the same list, but commonly and ideally, you would have just one type for all elements. By ordered, we mean that the order that you add them in, as you add to the end, will stay in the same place. The first item will always be the first regardless of what you add to the end.
+
+We may take a list to be declared like the following.
+
+```python
+my_favorite_numbers = [24, 1, 5, 100]
+```
+
+You may replace a certain value using its index, which is the location of a certain value, starting with 0 as the first position. If I wanted to replace the number 5 in the list above:
+
+```python
+>>> [24, 1, 5, 100] # Initial
+my_favorite_numbers[2] = 3
+>>> [24, 1, 3, 100] # Result
+```
+
+We simply use the brackets to designate the position we want to modify, and *assign* the new value to that position!
+
+Additionally, we may add new values to the end of the list using `append()`.
+
+If I wanted to add the number 7,
+
+```python
+>>> [24, 1, 3, 100] # Initial
+my_favorite_numbers.append(7)
+>>> [24, 1, 3, 100, 7] # Result
+```
+
+**Mutable vs Immutable Types** \
+An important concept within Python is the idea of mutability. Simply put, types that are *mutable* can be changed after creation, while immutable types cannot. This does not refer to `const` types. We are still able to change the value, or even change the type of that variable to another type. Mutability means that you can change the property of the variable *without* changing its identity. This is important to know, especially as we delve deeper into future workshops, since the mutability of a certain type may determine which one you may choose over another in certain situations. Immutable are quicker to access than mutable objects, while mutable objects are great to use when you need to change its size, like in a list.
+
+From the types we have covered so far, **int, float, and string** are immutable, while **list** is mutable.
+
+We can view what happens under the hood with `id()` in Python. `id()` simply returns the unique id for the particular variable. We can view mutability through this to understand what exactly is being changed and what is not.
+
+Let's take ints for example,
+```python
+x = 5
+y = x
+
+# At this point, id(x) == id(y)
+
+x = 3
+
+print (y) # y will still be 5, even though x is 3!
+          # Additionally, id(x) != id(y). It is an entirely new variable, rather than pointing to the same old one.
+```
+
+This works similarly with strings and floats. For mutable types such as list, however, we can view its mutability using `id()` as well.
+
+Say we have some list `y`, doing `y.append(3)` and `y[1] = 7` can be done directly without needing to reassing our list an entirely new list with those values, for example, whereas in the int example, changing y would require reassigning it. Further,
+
+```python
+some_list = [1, 2, 3]
+x = some_list # x and some_list are the same...
+x.append(7) # some_list will also have the added 7, even though this was added to x!
+```
+
+Using `id()` to demonstrate,
+```python
+my_list = [1, 2, 3]
+z = my_list
+
+# id(z) == id(my_list)
+
+x.append(7)
+
+# Even now, id(z) == id(my_list)!
+>>>
+
+```
+
+
+Mutability is tricky to grasp at first but is a critical concept.
+ 
 ## Conditionals
 If you've seen conditionals in other languages, conditionals in Python won't surprise you. Keeping with the theme of the language, though, there are a couple differences designed to make your life easier!
 
