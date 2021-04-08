@@ -12,7 +12,7 @@
 - [ACM Membership Attendance Portal](https://members.uclaacm.com/login)
 
 ## What we'll be learning today
-- [Downloading Python & Using the interpreter](#Downloading%20Python%20&%20Using%20The%20Interpreter)
+- [Downloading Python & Using the interpreter](#downloading-python--using-the-interpreter)
 - [Variables](#Variables)
     - Numbers and Math operations
     - Strings, String Operations, and Escape Sequences
