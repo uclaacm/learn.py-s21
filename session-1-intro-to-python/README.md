@@ -1,4 +1,4 @@
-# learn<span>.</span>py Session 5: Introduction to Python
+# learn<span>.</span>py Session 1: Introduction to Python
 
 **Date**: April 7, 2021
 
