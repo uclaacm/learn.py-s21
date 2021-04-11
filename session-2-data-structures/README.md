@@ -138,6 +138,8 @@ You can also leave certain fields blank. For example:
 
  >>> [0, 1, 2, 3, 4, 5][::2] # i and j are blank
     [0, 2, 4]
+>>> [0, 1, 2, 3, 4, 5][::-1] 
+    [5, 4, 3, 2, 1, 0]
 ```
 
 One really important thing to understand is that slicing creates **shallow copies**, not deep copies! This means that nested values are not copied, but merely referenced (i.e. they have the same id).
