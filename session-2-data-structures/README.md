@@ -25,8 +25,6 @@
 - Sets
 - Dictionaries
 
-** IDEA: Compute cartesian product using different constructs available in python (normal loops, then lambdas/map, then list comprehension) **
-
 ## Recap
 Last week, we showcased lists and explained that they are a container type in Python similar to resizable arrays in other languages. A key takeaway from our discussion was that lists are a **mutable** type.
 
