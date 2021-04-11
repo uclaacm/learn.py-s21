@@ -15,7 +15,7 @@ learn<span>.</span>py is a weekly workshop series dedicated to teaching Python i
 - Week 6: Web Scraping
 - Week 7: Web Development
 - Week 8: Web API's
-- Week 9: TBD
+- Week 9: Standard Library and Packages
 
 ## Essential Links
 

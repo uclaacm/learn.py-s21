@@ -1,4 +1,4 @@
-# learn<span>.</span>py Session 5: Introduction to Python
+# learn<span>.</span>py Session 2: Data Structures in Python
 
 **Date**: April 14, 2021
 
@@ -8,76 +8,300 @@
 
 ## Resources
 
-- [Slides](https://docs.google.com/presentation/d/1ATyV4KLqf9qmk8kfnXwJpChtq_fwGhTMVzowa_NdCnU/edit?usp=sharing)
+- [Slides](https://docs.google.com/presentation/d/1PvyGrX8Lxqzl3lpHhAwIUvFeuixkCE3hU-MGUdDtyMc/edit?usp=sharing)
 - [ACM Membership Attendance Portal](https://members.uclaacm.com/login)
 
 ## What we'll be learning today
-- TBD
+- [Sequences](#Sequences)
+    - common operations
+    - `in`
+    - splicing
+- [Tuples](#Tuples)
+    - sequence unpacking
+- [Lambdas](#Lambdas)
+- [List Comprehension](#list-comprehension)
+- Stacks & Queues
+- Collections
+- Sets
+- Dictionaries
 
-### Lambdas
-In Python, functions are known as first class objects meaning they can be assigned to variables and passed as arguments to other functions. 
+** IDEA: Compute cartesian product using different constructs available in python (normal loops, then lambdas/map, then list comprehension) **
 
-For example the following code is valid:
-```python
-def f(x):
-    return x **	2
+## Recap
+Last week, we showcased lists and explained that they are a container type in Python similar to resizable arrays in other languages. A key takeaway from our discussion was that lists are a **mutable** type.
 
-g = f
+ ### As a reminder:
+> **mutable**: value can change after initialization <br>
+> **immutable**: value cannot change after initialization
 
-print(g(5)) # prints 25
-```
+Lists are by far the most common structure to store ordered data, but Python offers several alternatives. Today, let's take a look at a couple of them! We'll explore use cases, implementations, and some *really* awesome Python-specific features for each one. First though, let's start with the foundation of all ordered data in Python: Sequences.
 
-as is 
-
-```python
-def transform_by(fun, x):
-    return fun(x)
-
-def some_func(i):
-    return i ** i
-
-transform_by(some_func, 3)
-```
-
-### Motivation for Lambdas
-
-Sometimes it becomes convenient to create anonymous functions (i.e small functions that don't have a name) and pass those around instead of doing the whole declaration. To showcase this, let me introduce the `map` function.
-
-`map` takes as input a function and some iterable object. It returns a list where each item in the iterable object has been given as input to the function and the return value has been placed in the list. This can be quite confusing so let's take a look at an example.
+## Sequences
+So what exactly is a sequence? Essentially, it's just a group of items that have some kind of ordering. Based on this definition, it's pretty clear that a list is a type of sequence (since elements in lists are ordered by their indices). In fact, so far we've shown you three sequence types: lists, strings, and ranges. 
 
 ```python
-def get_input(a):
-    return input(f"{a}: ")
+# All of these are sequences! 
 
-# creates a list of specified size based on user input
-def get_list(size):
-    return list(map(get_input, range(1, size + 1)))
-
-print(get_list(5)) #get a list with 5 values
+li = [99, "h-e-l-o", False]
+s = "~data structures~ 😎"
+r = range(1, 100, 2)
 ```
 
-> A Couple Notes:
-> - in python 3, `map` returns a map object (which is why we cast it to list)
-> - as the range is iterated over, its value is provided as an argument to the get_input function
-> - notice how we never call the get_input function ourselves, it's called by the map function
+Sequence types in Python have a set of **common operations** that can be applied to them, which is really convenient for us! Here's a quick overview:
 
-This is a case where using an anonymous function could be very convenient. The syntax for a lambda expression is as follows:
+![sequence operations](./img/sequence-operators.png)
+
+I won't be covering them all in depth, but there are a few I want to highlight due to how useful they can be, such as...
+
+### `in` Operator
+Very often in our programs we want to determine if there is a certain value within a sequence type.
+
+Suppose we wanted to determine if the value, `42`, was in some list, `meaning_of_life`. We could take the DIY approach as follows:
 
 ```python
-lambda i, j: i + j # a lambda that takes in two value and returns sum
+for meaning in meaning_of_life:
+    if meaning == 42:
+        print("42 is in meaning_of_life!")
 ```
 
-> Note: An important limitation of lambdas to keep in mind is that they are restricted to single expressions for their return values. This means they can only be used for small functions as shown above!
-
-Let's update our example from before to use a lambda.
+But this takes up 3 *whole* lines of code. We can do better with the `in` operator which is used as such: `x in s`. The expression will return `True` if the value `x` is contained within the sequence `s`. Let's rewrite our code from before:
 
 ```python
-def get_list(size):
-    return list(map(lambda a : input(f"{a}: "), range(1, size + 1))
-
-print(get_list(5))
+if 42 in meaning_of_life:
+    print("42 is in meaning_of_life!")
 ```
 
-Woah! Very concise. As you proceed with Python, you'll begin to appreciate just how much you can do in a single line, it's honestly kinda crazy (you can even go a bit too far, so take care in making sure your code is readable too!)
+Looks a lot nicer, right? Thank you Python developers <3
 
-Next time we'll go over a much cleaner way of handling behaviour like this (called list comprehension), so don't worry if this is confusing to you.
+And of course, just like all the other sequence operators I showed before, `in` can be used with any sequence type.
+
+```python
+# All of this is valid! 
+
+>>> False in [99, "h-e-l-o", False]
+    True
+
+>>> "ruct" in "~data structures~ 😎"
+    True
+
+>>> -99 in range(1, 100, 2)
+    False
+```
+
+> Note: the `in` used above is not the same as the `in` used in for loops!
+
+### Indexing and Splicing
+All sequences can be **indexed** in Python using the square bracket operator. For example, to get the element at the second index in a list:
+
+```python
+>>> li = ["hello", [a, b, c], -3, 2300.5]
+>>> li[2]
+    -3
+```
+
+You can also use negative values to retrieve values from the opposite end of a sequence. To get the last element in a sequence:
+
+```python
+>>> li = ["hello", [a, b, c], -3, 2300.5]
+>>> li[-1]
+    2300.5
+```
+
+**Splicing** is another super useful sequence operation! It allows you to concisely form subsequences based on an existing sequence. For example, if I wanted to get all the elements of a sequence from the 2nd index to the 5th index:
+
+```python
+>>> li = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight"]
+>>> li[2:6]
+    ["two", "three", "four", "five"]
+
+```
+
+More generally, the syntax for splicing is as follows:
+
+```python
+sequence[i:j:k]
+```
+
+- where i, j, and k are integers
+- i is the inclusive starting index
+- j is the exclusive stop index
+- k is the step
+
+You can also leave certain fields blank. For example:
+```python
+>>> [0, 1, 2, 3, 4, 5][:2] # i and k are blank
+    [0, 1]
+
+>>> [0, 1, 2, 3, 4, 5][2:] # j and k are blank
+    [2, 3, 4, 5]
+
+>>> [0, 1, 2, 3, 4, 5][:] # i,j, and k are blank
+    [0, 1, 2, 3, 4, 5]   
+
+ >>> [0, 1, 2, 3, 4, 5][::2] # i and j are blank
+    [0, 2, 4]
+```
+
+One really important thing to understand is that slicing creates **shallow copies**, not deep copies! This means that nested values are not copied, but merely referenced (i.e. they have the same id).
+
+> Note: If the sequence type you're dealing with is mutable, you can use splicing to update the section of the sequence you specify! Check out the docs linked below for more information.
+
+### Key Takeaway
+If you take anything away from this discussion, let it be that all sequence types in Python have a set of common operations that can be performed on them. I can't cover them all but I highly recommend checking out [this](https://docs.python.org/3/library/stdtypes.html#:~:text=There%20are%20three%20basic%20sequence,%2C%20tuples%2C%20and%20range%20objects.) website if you're interested in seeing more (particularly about mutable sequences)! 
+
+## Tuples
+Tuples are another sequence type in Python (meaning all the same operations from before still apply!). A tuple, much like a list, is simply a general sequence of elements. Tuples can be declared as follows:
+
+```python
+t = (1, 2, 3, 4)
+t = 1, 2, 3, 4 # parentheses optional!
+t = () # empty tuple
+t = (1, ) # single element tuple
+```
+
+> Note: single element tuples *must* include a trailing comma.
+
+Tuples differ from lists in one very significant way: they're immutable. That means it's not possible to reassign, remove, or insert any elements into an initialized tuple. Note that it is possible to reassign mutable objects within tuples (i.e. lists within tuples).
+
+
+I know what you're thinking. Why the hell would I ever want to use a tuple over a list?
+
+The short answer is for **optimization**. Tuples take up less space than lists and can be initialized significantly faster. As a result, if there's ever a case where you know that you won't change the values in a sequence, consider placing them in a tuple over a list.
+
+Very often, tuples are used for **heterogenous sequences**, or sequences of different types and the elements in the tuple are accessed via **unpacking**.
+
+### Sequence Unpacking
+Unpacking is once again applicable to all sequence types, but it is especially relevant in the case of tuples because it allows for some very nice syntactic sugar (which we'll get to in a second).
+
+Unpacking allows you to directly assign all elements in a sequence to a variable, as follows: 
+```python
+>>> li = ["a", "b", "c"]
+>>> x, y, z = li
+>>> print(x, y, z)
+    a b c
+```
+
+Notice that the first variable is assigned to the first element in the sequence, the second variable is assigned to the second element, and so on.
+
+Like I mentioned, unpacking tuples allows for some very convenient syntax:
+
+```python
+# assigning multiple variables at once
+a, b, c, = 1, 2, 3
+
+# swapping the values of variables
+x, y = y, x
+```
+
+It's because of simple things like this that Python has won my heart : )
+
+## Demo
+Let's write a function that, given two lists, will return a list of every possible pairing of elements between those two lists. If you care, this is called the [Cartesian Product](https://en.wikipedia.org/wiki/Cartesian_product). Let's also add a restriction that each pairing can only consist of values of the same type (i.e. integers cannot be paired with strings). 
+
+There are a ton of ways we could approach this, but let's first take the most obvious route: using loops.
+
+```python
+def cart_product(l1, l2):
+    result = []
+    for i in l1:
+        for j in l2:
+            if isinstance(i, type(j)):
+                result.append((i, j))
+    return result
+```
+
+> Note: `isinstance()` returns True if the first parameter provided is of the type specifed by the second parameter. `type()` returns the type of a value.
+
+This technically works, but its super ugly to look at! Too much indentation for my tastes 🤮
+
+Let's explore some other options. First though, let's take a look at another cool topic.
+
+## Lambdas
+Sometimes it becomes convenient to create anonymous functions (i.e small functions that don't have a name) and pass those around instead of doing the typical declaration. In these cases, we use lambdas! Here's a look at the progression in syntax from a simple `def` function to a `lambda`.
+
+```python
+# normal function declaration
+def sum(a, b, c):
+    return a + b + c
+
+# start transition
+def (a, b, c):
+    return a + b + c
+
+         |
+         V
+
+lambda (a, b, c):
+    return a + b + c
+
+         |
+         V
+
+lambda (a, b, c):
+    a + b + c
+
+         |
+         V
+
+lambda (a, b, c): a + b + c
+
+# lambda expression
+lambda a, b, c: a + b + c
+```
+
+The lambda expression above (which represents a sum of three values) can then be assigned to a variable or passed around just like any other function in Python.
+
+An important limitation of lambdas to keep in mind is that they are restricted to single expressions for their return values. This means they can only be used for small functions as shown above!
+
+One use case of lambdas is for the built in `map()` function.
+
+`map()` takes as input a function and some number of iterable objects. It returns a sequence where the items in the iterable objects have been given as input to the function and the return value has been placed in the return sequence. This can be quite confusing so let's take a look at an example.
+
+```python
+l1 = [1, 2, 3, 4, 5]
+l2 = ["a", "b", "c", "d", "e"]
+
+s = map(lambda a, b: f"{a}{b}", l1, l2) # returns a list that combines elements from two lists into a single string
+print(list(s)) # prints ['1a', '2b', '3c', '4d', '5e']
+```
+
+> Note: f"" indicates a format string, allowing us to include variables within { }. 
+> 
+> Additional note: `map()` returns a map sequence object, which must cast to a list in order to be easily printed
+
+Is this confusing to you? The developers of Python thought it would be. That's why they have deemed using `map()` and lambdas "**unpythonic**", meaning they strongly discourage ever using them together. (Feel free to use lamdas in other contexts, though!)
+
+Why then did I just spend so much time talking about lambdas and `map()`. Because it's a perfect segway into what I really wanted to talk about!!
+
+## List Comprehension
+List comprehension allows you to accomplish basically everything that `map()` can do in a simpler, more readable, and more elegant way! In order to see just how magical it is, let's transform our cartesian product function from before to use list comprehension.
+
+```python
+def cart_product(l1, l2):
+    return [(i, j) for i in l1 for j in l2 if isinstance(i, type(j))]
+```
+
+We went from 7 lines of code to just 2. Woah!
+
+Here's the general syntax:
+
+```python
+[expression for iterator in iterable if condition]
+```
+Let's break it down a bit. There are 3 distinct sections: the expression to be added to the list, the iteration, and the condition. For each iteration of the loop, if the condition is met then the expression will be evaluated and added to the resulting list generated by the comprehension (the if condition can also be left off to add values unconditionally). You can also nest multiple loops, as I showed in the `cart_product()` example.
+
+It's definitely possible to go slightly overboard with list comprehensions and make them a bit unreadable, so make sure not to get too carried away! 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
