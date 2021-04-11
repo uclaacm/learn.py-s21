@@ -269,7 +269,7 @@ print(list(s)) # prints ['1a', '2b', '3c', '4d', '5e']
 
 Is this confusing to you? The developers of Python thought it would be. That's why they have deemed using `map()` and lambdas "**unpythonic**", meaning they strongly discourage ever using them together. (Feel free to use lamdas in other contexts, though!)
 
-Why then did I just spend so much time talking about lambdas and `map()`. Because it's a perfect segway into what I really wanted to talk about!!
+Why then did I just spend so much time talking about lambdas and `map()`? Because it's a perfect segway into what I really wanted to talk about!!
 
 ## List Comprehension
 List comprehension allows you to accomplish basically everything that `map()` can do in a simpler, more readable, and more elegant way! In order to see just how magical it is, let's transform our cartesian product function from before to use list comprehension.
