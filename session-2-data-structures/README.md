@@ -88,7 +88,7 @@ And of course, just like all the other sequence operators I showed before, `in` 
 
 > Note: the `in` used above is not the same as the `in` used in for loops!
 
-### Indexing and Splicing
+### Indexing and Slicing
 All sequences can be **indexed** in Python using the square bracket operator. For example, to get the element at the second index in a list:
 
 ```python
@@ -105,7 +105,7 @@ You can also use negative values to retrieve values from the opposite end of a s
     2300.5
 ```
 
-**Splicing** is another super useful sequence operation! It allows you to concisely form subsequences based on an existing sequence. For example, if I wanted to get all the elements of a sequence from the 2nd index to the 5th index:
+**Slicing** is another super useful sequence operation! It allows you to concisely form subsequences based on an existing sequence. For example, if I wanted to get all the elements of a sequence from the 2nd index to the 5th index:
 
 ```python
 >>> li = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight"]
@@ -114,7 +114,7 @@ You can also use negative values to retrieve values from the opposite end of a s
 
 ```
 
-More generally, the syntax for splicing is as follows:
+More generally, the syntax for slicing is as follows:
 
 ```python
 sequence[i:j:k]
@@ -201,7 +201,7 @@ x, y = y, x
 It's because of simple things like this that Python has won my heart : )
 
 ## Demo
-Let's write a function that, given two lists, will return a list of every possible pairing of elements between those two lists. If you care, this is called the [Cartesian Product](https://en.wikipedia.org/wiki/Cartesian_product). Let's also add a restriction that each pairing can only consist of values of the same type (i.e. integers cannot be paired with strings). 
+Let's write a function that, given two lists, will return a list of every possible pairing of elements between those two lists. If you care, this is called the [Cartesian Product](https://en.wikipedia.org/wiki/Cartesian_product). Let's also add a restriction that given each pairing, each element must be distinct.
 
 There are a ton of ways we could approach this, but let's first take the most obvious route: using loops.
 
@@ -210,12 +210,10 @@ def cart_product(l1, l2):
     result = []
     for i in l1:
         for j in l2:
-            if isinstance(i, type(j)):
+            if i != j:
                 result.append((i, j))
     return result
 ```
-
-> Note: `isinstance()` returns True if the first parameter provided is of the type specifed by the second parameter. `type()` returns the type of a value.
 
 This technically works, but its super ugly to look at! Too much indentation for my tastes 🤮
 
@@ -226,7 +224,7 @@ List comprehension allows you to accomplish basically everything that `map()` ca
 
 ```python
 def cart_product(l1, l2):
-    return [(i, j) for i in l1 for j in l2 if isinstance(i, type(j))]
+    return [(i, j) for i in l1 for j in l2 if i != j]
 ```
 
 We went from 7 lines of code to just 2. Woah!
@@ -277,4 +275,4 @@ The lambda expression above (which represents a sum of three values) can then be
 
 An important limitation of lambdas to keep in mind is that they are restricted to single expressions for their return values. This means they can only be used for small functions as shown above!
 
-Let's take a look at a situation where you might want to use lambdas.
+Lambda's (as well as the fact that functions are first class objects) are key to Python's status as a multi-paradigm programming language. They allow the langauge to be used in a functional way. Next week, we'll take a look at an object-oriented approach to Python.
