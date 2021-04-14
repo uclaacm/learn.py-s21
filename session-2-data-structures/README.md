@@ -220,7 +220,7 @@ This technically works, but its super ugly to look at! Too much indentation for 
 Let's explore some other options. 
 
 ## List Comprehension
-List comprehension allows you to accomplish basically everything that `map()` can do in a simpler, more readable, and more elegant way! In order to see just how magical it is, let's transform our cartesian product function from before to use list comprehension.
+List comprehension is a concise way to generate a list from another list in a simple, readable, and elegant way! In order to see just how magical it is, let's transform our cartesian product function from before to use list comprehension.
 
 ```python
 def cart_product(l1, l2):
