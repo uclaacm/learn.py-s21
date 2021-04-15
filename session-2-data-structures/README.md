@@ -20,10 +20,10 @@
     - sequence unpacking
 - [List Comprehension](#list-comprehension)
 - [Lambdas](#Lambdas)
-- Stacks & Queues
-- Collections
-- Sets
-- Dictionaries
+- [Stacks & Queues](#stacks-&-queues)
+- [Collections](#Collections)
+- [Sets](#sets)
+- [Dictionaries](#dictionaries)
 
 ## Recap
 Last week, we showcased lists and explained that they are a container type in Python similar to resizable arrays in other languages. A key takeaway from our discussion was that lists are a **mutable** type.
@@ -276,3 +276,162 @@ The lambda expression above (which represents a sum of three values) can then be
 An important limitation of lambdas to keep in mind is that they are restricted to single expressions for their return values. This means they can only be used for small functions as shown above!
 
 Lambda's (as well as the fact that functions are first class objects) are key to Python's status as a multi-paradigm programming language. They allow the langauge to be used in a functional way. Next week, we'll take a look at an object-oriented approach to Python.
+
+## Stacks & Queues
+
+Let's explore a really cool application of lists, which leads to a very important concept with data structures. We're talking about stacks and queues! These are very similar in concept, but work quite different fundamentally.
+
+First, the stack. A stack is a structure where the elements that are inserted *first* are removed *last*. We call this **LIFO**, which is a cool way of saying that the elements that go in last are the first to leave. Conceptually, think of this like a stack of dishes or flapjacks. You stack dishes on top of each other, then remove them one by one from the top (unless you want all the dishes to drop and break). Adding items to a stack is called "push", and removing is called "pop"!
+
+Let's observe some stack operations!
+```python
+cool_letters = []
+cool_letters.append('n')
+cool_letters.append('b')
+cool_letters.append('x')
+print(cool_letters)
+# ['n', 'b', 'x']
+
+# This has been the same as a list so far, so let's get into how to use lists as stacks and queues. First, with a stack.
+
+# .pop() returns a value, that we can store in a variable
+current_fav_letter = cool_letters.pop()
+print(current_fav_letter)
+# x
+print(cool_letters.pop())
+# b
+print(cool_letters)
+# ['n']
+
+type(cool_letters)
+# <class 'list'>
+
+# Let's pop one more time to get an empty stack
+cool_letters.pop()
+# 'n'
+print(cool_letters)
+# []
+
+# What happens if we try to pop again?
+cool_letters.pop()
+
+# Traceback (most recent call last):
+#   File "<pyshell#17>", line 1, in <module>
+#     cool_letters.pop()
+# IndexError: pop from empty list
+# DO NOT pop on an empty stack, or you'll get an error!
+```
+
+Queues work in a similar way. A queue is a structure where the elements that are inserted *first* are also removed *first*. We call this **FIFO**, meaning the elements that go in first are the first to leave as well. You may think of it like standing in line at a store, where the customers in front are the ones who will be checked out first, and so on. Adding items to a queue is called "enqueue", and removing is called "dequeue"!
+
+Now let's observe some queue operations!
+```python
+# Let’s see how we work with queues!
+
+fav_fruits = ['strawberry', 'orange', 'watermelon']
+print(fav_fruits)
+# ['strawberry', 'orange', 'watermelon']
+
+# Use .pop(0) to dequeue an item!
+fav_fruits.pop(0)
+# 'strawberry'
+fav_fruits
+# ['orange', 'watermelon']
+
+# Let's clear the queue
+fav_fruits.pop(0)
+# 'orange'
+fav_fruits.pop(0)
+# 'watermelon'
+
+
+fav_fruits.pop(0)
+# What happens if we try to pop again?
+# Traceback (most recent call last):
+#   File "<pyshell#31>", line 1, in <module>
+#     fav_fruits.pop(0)
+# IndexError: pop from empty list
+# DO NOT pop on an empty queue, or you'll get an error!
+```
+
+There are many applications of stacks and queues, some of which can get quite complex. Some examples of stacks are an undo feature in a text editor, or the back button in your browser. Queues tend to have a bit more complex applications, but consider any situations in which you need to keep track the order in which things come in. A CPU does this often when keeping track of what tasks to accomplish.
+
+>As a side note, one cool thing you may try is think about how you might implement a maze solver with a stack, versus how you would accomplish this with a queue. How are they different? We call these *depth-first search* and *breadth-first search*. Can you figure out what they mean and which belongs to which data structure? :)
+
+>Note: When making queues, lists are not the most efficient way to do so. Because of the way lists are implemented, popping the first item is very inefficient. In fact, due to this, traditionally lists aren't used for queues. Instead, we can use `collections.deque` or `queue.Queue` (pronounce deque as "deck" to distinguish from the queue operation of dequeueing). I'll describe here how to do so with `collections.deque`, because once you understand different data structures conceptually, it is better to use the most efficient data structure for what you're trying to achieve. If you've taken CS 32 or any equivalent, you may have heard of linked lists. In fact, the linked list is how a deque is implemented, which is why deque is more efficient than having to shift over elements within a list when popping from the front.
+
+To use `collections.deque`, we will need to make an import statement. Import essentially gives you access to code that isn't immediately built into Python, but exists in a different "module" (an object that serves as an organizational unit of Python code). Once we have it imported, we can use deque!
+
+```python
+from collections import deque
+ 
+# This is how you may initialize an empty deque
+my_seque = deque()
+ 
+# Populating the queue with some elements
+my_queue.append('a')
+my_queue.append('b')
+my_queue.append('c')
+ 
+# This will show us the initial queue, which is ['a', 'b', 'c']
+print(my_queue)
+ 
+# Removing each elements from a queue
+print(my_queue.popleft()) # 'c'
+print(my_queue.popleft()) # 'b'
+print(my_queue.popleft()) # 'a'
+
+# We now have an empty queue
+print(my_queue)
+ 
+# Any .popleft() operations from this point will result in an error, since the queue is empty
+```
+
+We observe that while conceptually and operationally, they are very similar to how queues work, there are some different operations. `.popleft()` is equivalent to `.pop(0)`, but is more efficient behind the scenes. As you go forward, it is recommend that you use deque once you have an understanding of how queues operate!
+
+## Collections
+
+Collections in Python are similar to sequences in that they also hold data, but they work a little differently! Collections __don't use deterministic ordering__, meaning what you added **will not** stay in the same order that you added them. The ones we will talk about today are Sets and Dictionaries!
+
+## Sets
+
+A set is a type of *unordered* collection that does not allow duplicate items. To initialize a set, you either use `set()`, which you do to make an empty set, or `my_set_name = {1, 2, 3}`.
+
+We can perform some mathematical operations that are inherent to sets. Let’s say we perform these on sets myset and myset2.
+-  Union: Resulting set is all items in myset and myset2 (both unique and shared items).
+- Intersection: Resulting set is all items in myset and myset2 that are shared amongst the two.
+- Difference: Resulting set is all items in myset that are not in myset2.
+- Symmetric Difference: Resulting set is all items in myset and myset2 that are in one, or the other, but not both.
+
+Why should we use Sets over, say, a list? We use sets because sets are faster than lists if you want to check if a certain item is contained within it. However, they can only contain one occurrence of an item. If you wanted to just store a certain amount of things, ie all your favorite fruits, it may be better to use a set because you do not need your favorite fruits to be listed twice and it's not really necessary to access a certain fruit in a certain order. You may just want to know whether a certain fruit is a favorite or not.
+
+There are more set operations that we can do!
+- To add an item to a set, you do `set_name.add(value)`.
+    - You are able to add items that are of different types into a set
+- To remove a certain item, we have two methods, `discard` and `remove`.
+    - The difference between the two is that if the element is not in the set and you try to remove it, remove will give you an error, while discard will not.
+    - There is also the previous `.pop()` removes one random element from the set.
+
+
+## Dictionaries
+
+Dictionaries are another very useful form of storing data. You can think of dictionaries as **key:value** pairs, where the keys must be unique within each dictionary. Dictionaries can be iterated over, but since they use keys, they cannot be indexed, which is why they are not a sequence. For example, you can still make make a for loop to print out each of the items within a dictionary! It's important to note that in a dictionary, the keys can be of any **immutable** data type.
+
+To create an empty dictionary, you may simply do `variable_name = {}` and add one by one. You may also put some initial key:value pairs into the dictionary by doing something similar to the following:
+```python
+percent_of_hades_completion = {‘run1’ : 2, ‘run19’ : 20}
+```
+
+Now you may be wondering: *Wait, how does Python know the difference between an empty set and an empty dictionary, if they’re both using curly braces?* Good question! By default, doing `my_var = {}` will tell Python that you want to make a dictionary. The way to create an empty set is by doing `my_var = set()`.
+
+As with all containers, there are some dictionary operations that we may do!
+- You may do `sorted(dictionary_name)` to sort the dictionary by key!
+- Adding items to the dictionary is done by doing `dictionary_name[some_new_key] = some_new_value`
+- You can retrieve values by either using `dictionary_name[some_key]` or `.get(some_key)`
+    - Using [] will give you an error on keys that do not exist, while .get() will simply return None
+- You can update items by doing `some_dictionary[some_key] = some_updated value`
+- You can delete items by either doing:
+    - `.pop(key_name)` [This will give an error if it does not exist]
+    - `.popitem()` [This will remove the last item that was inserted]
+        - Before version 3.7, it popped a random item
+    - You may also do `.clear()` to wipe the entire dictionary!
