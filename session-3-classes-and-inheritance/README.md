@@ -1,4 +1,4 @@
-# learn<span>.</span>py Session 2: Data Structures in Python
+# learn<span>.</span>py Session 3: Classes and Inheritance
 
 **Date**: April 21, 2021
 
