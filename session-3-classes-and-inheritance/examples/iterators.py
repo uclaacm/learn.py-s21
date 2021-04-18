@@ -2,7 +2,7 @@
 for element in [1, 2, 3]:
     print(element)
 
-class NumberCounter():
+class NumberCounter:
     def __init__(self, num):
         self.max = num
     
@@ -27,5 +27,5 @@ def countGen(max):
     for i in range(1, max+1):
         yield i
 
-#Generator Expressions  
-newitr = (x for x in range(1, 20))
+#Generator Expressions
+count20 = (x for x in range(1, 20))

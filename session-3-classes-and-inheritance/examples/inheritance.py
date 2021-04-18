@@ -23,7 +23,7 @@ class Student(Person):
     def introduce(self):
         super().introduce()
         # print("Hi! My name is", self.firstname, self.lastname)
-        print("I am a student")
+        print("I am a nerd")
     
     def study(self):
         print("studying~")
