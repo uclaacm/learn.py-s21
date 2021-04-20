@@ -13,13 +13,13 @@
 
 ## What we'll be learning today
 - Classes
-- Inheritance
+- [Inheritance](#inheritance)
   - Overriding methods
   - `super()` function
   - Private variables in Python
-- `__doc__`
-- Iterators
-- Generators
+- [`__doc__`](#__doc__)
+- [Iterators](#Iterators)
+- [Generators](#generators)
   - Generator Expressions
 
 ## Inheritance
@@ -210,7 +210,7 @@ z.study()
 
 This is useful because now we don't need to worry about who's inheriting from who, or which parent class to specify, we just need to use `super()` and let it handle all of the inheritance for us. 
 
-> Note: `super()` has other use cases apart from this. Generally, it is recommended to use `super()` since it is well defined even when there is complex inheritance going on. If you're interested in learning more, you can read up about the `super()` function and **MRO** (Method Resolution Order) in Python.
+> Note: `super()` has other use cases apart from this. Generally, it is recommended to use `super()` since it is well defined even when there is complex inheritance going on. If you're interested in learning more, you can read up about the `super()` function and **[MRO](https://www.geeksforgeeks.org/method-resolution-order-in-python-inheritance/)** (Method Resolution Order) in Python.
 
 
 ### Private Varibles in Python
@@ -267,7 +267,7 @@ for element in [1, 2, 3]:
 
 How does Python achieve this? The answer is using **iterators**. 
 
-Every object in Python has the `__iter__()` and `__next__()` methods. Just like the `__init__()` method, they are special methods that have really specific behavior that we can redefine as wel like. Together, `__iter__()` and `__next__()` are called the **iterator protocol** and using these methods, Python is able to loop over the items in an object. 
+Every object in Python has the `__iter__()` and `__next__()` methods. Just like the `__init__()` method, they are special methods that have really specific behavior that we can redefine as well. Together, `__iter__()` and `__next__()` are called the **iterator protocol** and using these methods, Python is able to loop over the items in an object. 
 
 - `__iter__()` returns an iterator object that we can iterate over. 
 - `__next__()` enables use to manually iterate through all items of an iterator. When we reach the end and there is no data to be returned, it will raise a StopIteration.
