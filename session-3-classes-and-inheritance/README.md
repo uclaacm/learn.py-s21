@@ -4,7 +4,7 @@
 
 **Location**: Zoom
 
-**Teachers**: [Jakob Reinwald](), [Alex Xia](https://github.com/khxia)
+**Teachers**: [Jakob Reinwald](https://github.com/jakobreinwald), [Alex Xia](https://github.com/khxia)
 
 ## Resources
 
