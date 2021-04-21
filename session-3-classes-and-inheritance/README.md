@@ -12,7 +12,11 @@
 - [ACM Membership Attendance Portal](https://members.uclaacm.com/login)
 
 ## What we'll be learning today
+- Intro to Scopes
 - Classes
+  - __init__()
+  - Instance Objects
+  - Attribute References 
 - [Inheritance](#inheritance)
   - Overriding methods
   - `super()` function
@@ -21,6 +25,177 @@
 - [Iterators](#Iterators)
 - [Generators](#generators)
   - Generator Expressions
+
+## Intro to Scopes
+
+Let’s start with a quick demo. 
+```py
+less_specific = 5
+
+def foo():
+    more_specific = 2
+    print('Inside foo:', less_specific)
+
+foo()
+# print(more_specific) will not work (accessing local scope variable outside of local scope)
+```
+As we could see, I could not access the variable more_specific outside of the function foo, but I could access the variable less_specific inside the function foo. Huh?
+So, let’s start with a question. At any point in a program, what variables and functions do I have access to? Does it matter where I am in my program?
+The short answer is. . . Yes! It does matter. The information you currently have access to is determined by the scope you are currently in.
+
+Scopes are textual regions of a Python program that define in your code where variables/methods can be accessed. One of the most important aspects of scopes is that a more specific scope can access the information of a less specific scope, but not the other way around
+
+Now, lets go into the types of scopes! But before that, a quick note for people migrating from C++ or might not be familiar with this concept in Python:
+- In python, functions can be nested within other functions, which is super cool! They’re just called nested functions. Here’s an example: 
+```py
+def a():
+    def b():
+        print('hello from nested function!')
+    print('hello from outer function!')
+    b()
+a()
+```
+I have a function a that has a nested function b, which prints out ‘hello from nested function’. Then, in a, I print ‘hello from out function’ then call the nested function b. That means that if I call a, I would expect an output of the outer function message, then the nested function message. To check though, lets run it ourselves.
+
+Now, lets go over the types of scopes.
+In order from most to least zoomed in:
+Local Scope: The local scope refers to the names inside a class/function. Outside a class/function, the local scope is same as global scope. Even if a function has a nested function, the local scope of a class/function is always itself. We will see this demonstrated on the next slide.
+Non-local Scope: Midways between the local and global scope. Relevant for nested functions (ex: the non-local scope of a function a within function b is function b)
+Global Scope: The scope outside any functions of class definitions. This is sometimes also called the “module” scope
+Built-ins Scope: Built into python. TThe function print is not defined in our program, but is built into python itself (built-ins scope)
+
+What does this all mean?? Basically, Scopes allow us to be sure that:
+- More specific namespaces will never be altered by less specific namespaces
+- More specific namespaces will always have access to less specific namespaces (read-only, however)
+
+Here is a short demo of how scopes work:
+```py
+# global scope
+global_var = 'hello from global scope'
+
+def regular_func():
+    # non-local scope of nested_func, local scope of regular_func
+    non_local_var = 'hello from non-local scope'
+    def nested_func():
+        # local scope of nested_func
+        local_var = 'hello from local scope'
+        print(global_var)
+        print(non_local_var)
+        print(local_var)
+    nested_func()
+
+# regular_func calls nested_func, so everything will be outputted
+regular_func()
+# print(local_var), print(non_local_var), or trying to call nested_func() will not work,
+#   as we are outside of the scope that contains them
+```
+
+## Classes
+
+Now, lets move on to classes. As a basic intro, Classes provide a means of bundling data and functionality together. They allow us to create a new type of object and create instances of that object. Each class has attributes attached to it that maintain its state and functionality. As a quick sidenote, what is an attribute? A class attribute is a feature or characteristic that belongs to a class. It can be a variable, but it can also be a method. They allow for the object to maintain and perform its functionality. 
+
+Another quick thing: instance variables vs class variables: their difference is important: instance variables are data unique to each instance of a class, while class variables are common to all instances of the class. Example: every car has four wheels, so number of wheels would be best as a class variable, but each car has a different name, so car name would be best as an instance variable.
+
+Now, how do we create a class?? Basically, you put `class Classname:`, indent, and write out all your statements of class definition. This could be variable declaration, method declaration, etc.. Once the class definition is left, a class object is created. Class objects support two kinds of operations: attribute references and instantiation. Attributes can be accessed with `class_object.attribute_name` and are instantiated using function notation:
+`x = MyClass()`  creates a new instance of the class and assigns it to local variable x. 
+The instantiation operation creates an empty object, however, many classes need to be created with instances that start in a specific state. Therefore, a class definition may include a special function called `__init__()`. `__init__()` is Python's constructor, and is automatically invoked when a class is created. Its definition looks like this:
+```py
+def __init__(self):
+	<initialize/assign attributes of your class>
+```
+
+But wait a minute, what's `self`? `self` is usually the first argument of a method, which represents passing the instance object into the method. It is kind of like `this` from C++, but it has to be passed as a parameter in `__init__()`. Init may also have arguments for greater flexibility. Arguments passed in during class instantiation are given to `__init()__`. So, if I have a variable attribute that I want to initialize to an argument provided by the user, I would do it like so in `__init__()`: 
+```py
+def __init__(self, argument1):
+	self.attribute = argument1
+```
+And in order to pass the argument argument1 into `__init__()`, I need to pass it in to the function notation when I declare my class:
+`new_instance = class_name(argument1)`
+
+So, we have our object, now what? Instance objects can only understand attribute references, of which are two types: data attributes and methods.
+Data attributes are “instance variables” or “data members”, and spring into existence when first assigned to. Methods are functions that “belong” to a class. Additionally, the method belonging to an instance of a class is a method object, meaning that it can be stored for later use:
+`xf = x.f()`
+Now, `xf()` can be called later.
+
+Demo time! We are going to go over a very basic class demo, and then I want to do a demonstration of why you should be careful using mutable objects as class variables. 
+```py
+# Basic class example: class Telescope
+class Telescope:
+    zoominess = 120
+
+    # Initializing attribute of class by passing arguments into init
+    def __init__(self, type):
+        self.type = type
+
+    def zoom_in(self):
+        self.zoominess *= 2
+
+    def zoom_out(self):
+        self.zoominess /= 2
+
+# Pass values that will be given to init for assignment to instance variables
+bigboi = Telescope('big')
+smallboi = Telescope('small')
+
+# Demonstration of attribute references 
+bigboi.zoom_in()
+smallboi.zoom_out()
+
+print(bigboi.type, bigboi.zoominess)
+print(smallboi.type, smallboi.zoominess)
+```
+
+```py
+# Another basic class demo, this time showing why mutable class variables is not good
+class Telescopes:
+    # class variable that is mutable (!)
+    telescope_names = []
+
+    def __init__(self, location):
+        self.location = location
+
+    def add_telescope(self, telescope_name):
+        self.telescope_names.append(telescope_name)
+
+
+observatory1 = Telescopes('San Jose')
+observatory2 = Telescopes('LA')
+
+observatory1.add_telescope('pirate scope')
+observatory2.add_telescope('toy scope')
+
+# Both objects' telescope_names is the same! Very bad!
+print(observatory1.location, observatory1.telescope_names)
+print(observatory2.location, observatory2.telescope_names)
+```
+
+```py
+# Fixed example
+class TelescopeNames:
+
+    # We can fix this by making telescope_names an instance variable, by putting it in init
+    def __init__(self, location):
+        self.telescope_names = []
+        self.location = location
+
+    def add_telescope(self, telescope_name):
+        self.telescope_names.append(telescope_name)
+
+
+observatory1 = TelescopeNames('San Jose')
+observatory2 = TelescopeNames('LA')
+
+observatory1.add_telescope('pirate scope')
+observatory2.add_telescope('toy scope')
+
+# They are different this time! Yay.
+print(observatory1.location, observatory1.telescope_names)
+print(observatory2.location, observatory2.telescope_names)
+
+# In summary, why not to use mutable objects as class variables: 
+#       They will be modified/shared by all instances of the class
+```
+
 
 ## Inheritance
 
