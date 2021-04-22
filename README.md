@@ -10,7 +10,7 @@ learn<span>.</span>py is a weekly workshop series dedicated to teaching Python i
 
 - [Week 2: Intro to Python](https://github.com/uclaacm/learn.py-s21/tree/main/session-1-intro-to-python) 
 - [Week 3: Data Structures in Python](https://github.com/uclaacm/learn.py-s21/tree/main/session-2-data-structures) 
-- Week 4: [Classes](https://github.com/uclaacm/learn.py-s21/tree/main/session-3-classes-and-inheritance)
+- [Week 4: Classes](https://github.com/uclaacm/learn.py-s21/tree/main/session-3-classes-and-inheritance)
 - Week 5: Automation & File I/O
 - Week 6: Web Scraping
 - Week 7: Web Development
