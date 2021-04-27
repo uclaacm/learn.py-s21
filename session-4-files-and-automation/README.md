@@ -14,7 +14,7 @@
 ## What we'll be learning today
 - [Modules](#modules)
 - [Exceptions and Handling](#exceptions)
-- [File I/O](#File-I/O)
+- [File I/O](#File)
 - [Time/Scheduling](#time)
 - [Twilio text bot demo](#twilio-text-bot-demo)
 
@@ -375,7 +375,7 @@ The output of this code would be:
 I don't want to workout
 ```
 
-## File I/O
+## File
 File I/O stands for File Input/Ouput, which is just fancy
 terminology for "reading and writing to files". 
 
@@ -534,10 +534,82 @@ the `open()` function fails. However, this code is much
 cleaner and simpler than our previous code. 
 
 ## Time
+Time is commonly used in Python as a way of tracking or displaying time periods.
+
+### Importing Time
+In order to begin working with time, we have to import the time module. To do this, we simply add this line of code to the top of our file:
+```py
+import time
+```
+
+### Methods in Time
+The main 2 methods that we'll be covering of the Time library are `time.time()` and `time.ctime()`. Let's start by looking at what happens when you run this line of code: 
+```py
+print(time.time())
+```
+
+The result comes out to be a weird-looking number, something around 1619554030.6529422. While it might look like nonsense at first, this number actually represents the number of second that have passed since 12AM January 1st, 1970 (this is also known as Unix epoch time). However, if we were to run this line of code instead:
+```py
+print(time.ctime())
+```
+we end up with something along the lines of 'Tue Apr 27 13:07:10 2021'. As illustrated by these 2 examples, `time.time()` gives a plain count of the number of seconds passed since Unix epoch time while `time.ctime()` gives a readable version of the current time.
+
+### Converting between formats
+As we just saw, the 2 main methods (`time.time()` and `time.ctime()`) produce different results that represent the same thing (the current time). We're able to easily covert from the seconds format (`time.time()`) to the readable format by passing the seconds in as a parameter to the `time.ctime()` method:
+```py
+t = time.time()
+print(time.ctime(t))
+```
+
+However, 1 thing to note is that this conversion can only happen in this way, meaning you not able to go from `time.ctime()` format to `time.time()` format. As such, I would recommend that you do most of your operations in the seconds format first and only when needed convert that back to the readable format.
+
+### Applications of time in scheduling
+This leads us up to the application of these time methods in actually accomplishing some sort of scheduling. Since the `time.time()` method returns a literal number of seconds, it is preferred to use this method to track the time that has passed. In order to demonstrate this, we can also use another time method: `time.sleep()`. This method takes a parameter that indicates how many seconds the program should pause for. For example, if we were to run `time.sleep(5)`, it would the program to pause for 5 seconds.
+
+Let's look at an example with the code below:
+```py
+start = time.time()
+time.sleep(5)
+end = time.time()
+print(end - start)
+```
+
+At first glance, it seems as if this code is recording 2 times that should be separated by a pause of 5 seconds. Therefore, we would expect this to print out 5 right? If we actually ran this code, we would end up with a number along the lines of 5.002849. As it turns out, the number of seconds between the start and end isn't exactly 5, but it is extremely close. The reason for this gets a bit more complicated, so we won't be talking about this too much. However, if you want to learn more, it has to do with how time is tracked within the machine itself, only updating a few hundred times a second or so.
+
+No matter the case, this gives us a pretty good way of putting some sort of pause between our code, allowing us to schedule later lines to be run at a later time. To show this, if we wanted to print out 'hi' after 60 seconds, we could literally just write:
+```py
+time.sleep(60)
+print('hi')
+```
+
+There is a lot of room for creativity using the tools that time provides, so we couldn't possibly go over every application. However, we thought of a cool text bot example to give you guys a taste of what you can accomplish with this library.
 
 ## Twilio Text Bot Demo
+Twilio is a service that allows you to send and receive texts and emails through a virtual phone number. In our case, we're going to be using the Twilio generated phone number to text ourselves. However, if you choose to upgrade to the premium (not required for this workshop), there are many more features.
 
+### Set-up
+In order to start with this demo, you will need to create an account with [Twilio](twilio.com). It'll ask you to verify your email and then your phone number. Once on the Twilio dashboard, you should be able to set-up your Twilio phone number (each account comes with $15.00 of creidts so don't worry about charges). On your dashboard, you'll also see your account SID and authentication token, both of which you will need later on.
 
+We also have to do a bit of set-up in terms of your Python environment to use the Twilio module. Run the following line of code:
+Mac: `brew tap twilio/brew && brew install twilio`
+Windows: `npm install twilio-cli -g`
+
+After that, run the line `pip install twilio`. Now you should be able to import the Twilio moedules for the demo. We have starter code for the demo also in the repository, so if you would like to get started with that rather than coding along, feel free to download it instead.
+
+### Coding the text bot
+First of all, you'll need to import the Twilio module using the line `from twilio.rest import Client`. We'll also be working with time, so we'll need `import time` as well.
+
+We'll start by setting variables for our account SID, authentication token, and phone numbers (both yours and Twilio). Copy paste these values over from Twilio and set them to whatever variable name you'd like. As an example, you may write something like:
+```py
+accountSID = 'INSERT YOUR TWILIO ACCOUNT SID HERE'
+```
+
+Next, we'll use the Twilio client by writing `twilioCli = Client(accountSID, authToken)` (feel free to replace 'accountSID' and 'authToken' with whatever you chose to name your variables). To send a message, simply write something like:
+```py
+message = twilioCli.messages.create(body='hello' + exer, from_=myTwilioNumber, to=myCellPhone)
+```
+
+Once again, feel free to replace the variable names and body text with whatever you like. Once you run this code, you should see the message texted to your phone within a few seconds! Like with time, there's an infinite amount of ways you can use this, so don't be afraid to explore further :)
 
 ## Wrapup
 If you got to here you are a real trooper 😤. Feel free to ask any Hack officer or pop in the ACM discord if you have any questions!
