@@ -7,4 +7,4 @@ twilioCli = Client(accountSID, authToken)
 myTwilioNumber = '' #insert your twilio account number
 myCellPhone = '' #insert you actual number here
 
-message = twilioCli.messages.create(body='' + exer, from_=myTwilioNumber, to=myCellPhone) #insert your message in body
+message = twilioCli.messages.create(body='', from_=myTwilioNumber, to=myCellPhone) #insert your message in body
