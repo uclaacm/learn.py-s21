@@ -179,7 +179,7 @@ You may ask why the constructor for `Card` accepts a list. The answer is that I'
 
 
 ### Code: getCards()
-This is where we use Selenium. All we need to do here is tell Selenium to open Chrome, got to mtgstocks.com, find the table, read all the rows to us, **THEN CLOSE THE BROWSER SO CHROME DOESN'T CONSUM*E ALL YO*UR CPU/RAM LIKE THE ELD`RAZ`I TITAN`S C`ONS*UMED T*HE P`LANE OF Z`~~ENDI~~`KAR L`EA*VING ON*LY ~~DES~~T*RUCTI*`ON` AND** $WA^ST_EL\sqrt{AND}$ $IN$ $T\hat HEIR$ $W\wedge KE$. $O^H$ $\frac{N}{O}$ $\bar I_{T'}^{\hat S}$ $T_{H_E}M$ $RUN$.
+This is where we use Selenium. All we need to do here is tell Selenium to open Chrome, got to mtgstocks.com, find the table, read all the rows to us, **THEN CLOSE THE BROWSER SO CHROME DOESN'T CONSUM*E ALL YO*UR CPU/RAM LIKE THE ELD`RAZ`I TITAN`S C`ONS*UMED T*HE P`LANE OF Z`~~ENDI~~`KAR L`EA*VING ON*LY ~~DES~~T*RUCTI*`ON` AND** WA<sup>S</sup>T<sub>E</sub>~~LAND~~ IN <sup>TH<sup>EI</sup>R WA</sup>KE. O<sup>H</sup> `NO` I<sub>T'</sub><sup>S</sup> T<sub>H<sub>E</sub>M RU</sub>N.
 
 <img width=200 src="./assets/emrakul.jpeg">
 
