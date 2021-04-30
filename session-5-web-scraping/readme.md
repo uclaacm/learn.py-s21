@@ -30,7 +30,7 @@
 	- [Code: Start](#code-start)
 	- [Code: Card Class](#code-card-class)
 	- [Code: getCards()](#code-getcards)
-	- [Code: getCards()](#code-getcards-1)
+	- [Code: lookForFavoriteCards()](#code-lookforfavoritecards)
 	- [Code: We're done!](#code-were-done)
 	- [Tip: Store Data to Prevent Excessive Requests!](#tip-store-data-to-prevent-excessive-requests)
 - [Reverse Engineering](#reverse-engineering)
@@ -238,7 +238,7 @@ driver.quit()
 ```
 This closes the browser. Please do this.
 
-### Code: getCards()
+### Code: lookForFavoriteCards()
 ```py
 def lookForFavoriteCards(favoriteCards):
 	cards = getCards()
@@ -294,15 +294,15 @@ Ok, but having to boot up a browser to web scrape is kind of really annoying. We
 
 ~~Sometimes~~ ~~Often~~ Almost Always, sites will have your browser make multiple requests for different resources. Sometimes, one of these requests is exactly the data we want to get. Let's see if mtgstocks makes a separate request for it's card information!
 
-<img width=500 src="./assets/page-with-network-tab.png">
+<img width=700 src="./assets/page-with-network-tab.png">
 
 We can open the networking tab in Chrome and reload the page. This should list off all the requests that are made. We can sift through these until...
 
-<img width=500 src="./assets/network-tab.png">
+<img width=700 src="./assets/network-tab.png">
 
 AHA! Look at that request named 'average'. This looks like what we were looking for!
 
-<img width=500 src="./assets/headers_tab.png">
+<img width=700 src="./assets/headers_tab.png">
 
 If we look at the headers tab, we see that we can access this information at `"https://api.mtgstocks.com/interests/average"`. Let's try writing a program to get only this list. 
 
