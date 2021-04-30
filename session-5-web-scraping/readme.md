@@ -111,10 +111,10 @@ Did you know that Magic: The Gathering cards are practically as liquid as the US
 
 <img width=500 src="assets/scrap.png">
  
-Let's write a program that can check mtgstocks.com (yes this is very real) every once in a while to see if any cards we care about increased (or decreased) in price within the last day. First, we need to take a look at the site that we are scraping.
+Let's write a program that can check [mtgstocks.com](https://www.mtgstocks.com) (yes this is very real) every once in a while to see if any cards we care about increased (or decreased) in price within the last day. First, we need to take a look at the site that we are scraping.
 
 ### The HTML of MTGStocks
-We can use Chrome's handy inspector tool to look at the source of mtgstocks.com. Upon inspection, we see the following:
+We can use Chrome's handy inspector tool to look at the source of [mtgstocks.com](https://www.mtgstocks.com). Upon inspection, we see the following:
 
 <img width=500 src="assets/recon.png">
 
@@ -179,7 +179,7 @@ You may ask why the constructor for `Card` accepts a list. The answer is that I'
 
 
 ### Code: getCards()
-This is where we use Selenium. All we need to do here is tell Selenium to open Chrome, got to mtgstocks.com, find the table, read all the rows to us, **THEN CLOSE THE BROWSER SO CHROME DOESN'T CONSUM*E ALL YO*UR CPU/RAM LIKE THE ELD`RAZ`I TITAN`S C`ONS*UMED T*HE P`LANE OF Z`~~ENDI~~`KAR L`EA*VING ON*LY ~~DES~~T*RUCTI*`ON` AND** WA<sup>S</sup>T<sub>E</sub>~~LAND~~ IN <sup>TH<sup>EI</sup>R WA</sup>KE. O<sup>H</sup> `NO` I<sub>T'</sub><sup>S</sup> T<sub>H<sub>E</sub>M RU</sub>N.
+This is where we use Selenium. All we need to do here is tell Selenium to open Chrome, got to [mtgstocks.com](https://www.mtgstocks.com), find the table, read all the rows to us, **THEN CLOSE THE BROWSER SO CHROME DOESN'T CONSUM*E ALL YO*UR CPU/RAM LIKE THE ELD`RAZ`I TITAN`S C`ONS*UMED T*HE P`LANE OF Z`~~ENDI~~`KAR L`EA*VING ON*LY ~~DES~~T*RUCTI*`ON` AND** WA<sup>S</sup>T<sub>E</sub>~~LAND~~ IN <sup>TH<sup>EI</sup>R WA</sup>KE. O<sup>H</sup> `NO` I<sub>T'</sub><sup>S</sup> T<sub>H<sub>E</sub>M RU</sub>N.
 
 <img width=200 src="./assets/emrakul.jpeg">
 
@@ -253,7 +253,7 @@ There's not too much to explain here. For each card that's also in our `favorite
 
 ### Code: We're done!
 
-Let's try calling `lookForFavoriteCards` with a list of cards that includes one that went up today on mtgstocks.com/interests
+Let's try calling `lookForFavoriteCards` with a list of cards that includes one that went up today on [mtgstocks.com/interests](https://www.mtgstocks.com/interests)
 ```py
 lookForFavoriteCards(["Reverse Damage", "Ripjaw Raptor", "Ashnod's Altar", "Scrap Mastery"])
 ```
@@ -276,7 +276,7 @@ This time, we'll have three functions:
 * **getCache**: Check if we **recently** accessed and stored the cards to a file 'cards.csv', if we did, return a list of cards. Otherwise, return an empty list.
   * Arguments: None
   * Returns: List of cards
-* **fillCache**: Get cards from mtgstocks.com/interests and write a single timestamp and the cards to 'cards.csv' in the following form: 
+* **fillCache**: Get cards from [mtgstocks.com/interests](https://www.mtgstocks.com/interests) and write a single timestamp and the cards to 'cards.csv' in the following form: 
 	```
 	Timestamp
 	CardName,CardSet,NewPrice,OldPrice,Change
