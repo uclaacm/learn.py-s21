@@ -4,6 +4,7 @@ CHROMEDRIVER_PATH = '/usr/local/bin/chromeDriver'
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import time
+from selenium.webdriver.common.by import By
 
 class Card:
 	def __init__(self, list_from_site):
@@ -39,16 +40,17 @@ def fillCache():
 	driver = webdriver.Chrome(CHROMEDRIVER_PATH, options=options)
 	driver.implicitly_wait(15)
 	driver.get(URL)
-	tables = driver.find_elements_by_tag_name("table")
+	tables = driver.find_elements(By.TAG_NAME, "table")
 	print(driver.title)
-	rows = tables[0].find_element_by_tag_name("tbody").find_elements_by_tag_name("tr")
-	rows = [[col.text for col in row.find_elements_by_tag_name("td")] for row in rows]
+	body = tables[0].find_element(By.TAG_NAME, "tbody")
+	rows = body.find_elements(By.TAG_NAME, "tr")
+	cards = [[col.text for col in row.find_elements(By.TAG_NAME, "td")] for row in rows]
 	with open("cards.csv", "w") as f:
 		f.write(str(time.time()) + "\n")
-		for card in rows:
+		for card in cards:
 			f.write(",".join(card) + "\n")
 	driver.quit()
-	return [Card(row) for row in rows]
+	return [Card(card) for card in cards]
 
 def lookForFavoriteCards(favoriteCards):
 	rows = getCache()

@@ -12,6 +12,8 @@
 - [ACM Membership Attendance Portal](https://members.uclaacm.com/login)
 
 ## What we'll be learning today <!-- omit in toc -->
+- [What is Web Scraping](#what-is-web-scraping)
+	- [Note: Ethics and Web Scraping](#note-ethics-and-web-scraping)
 - [Goal and Motivation](#goal-and-motivation)
 	- [Things to Try Before Web Scraping](#things-to-try-before-web-scraping)
 - [Installing Selenium (and Requests for later...)](#installing-selenium-and-requests-for-later)
@@ -20,8 +22,6 @@
 - [Some Groundwork Knowledge](#some-groundwork-knowledge)
 	- [Trees](#trees)
 	- [HTML](#html)
-- [What is Web Scraping](#what-is-web-scraping)
-	- [Note: Ethics and Web Scraping](#note-ethics-and-web-scraping)
 - [JavaScript: A Wrench in the Plan](#javascript-a-wrench-in-the-plan)
 - [Demo: Scraping mtgstocks](#demo-scraping-mtgstocks)
 	- [Background](#background)
@@ -36,6 +36,13 @@
 - [Reverse Engineering](#reverse-engineering)
 - [Demo: Reverse Engineering](#demo-reverse-engineering)
 
+## What is Web Scraping
+Web scraping is the (usually automated) process of extracting data from the web. For example, if you manually used the internet to take note of a few stock prices then you are technically web scraping. Our goal, however, is to automate this mundane task. How do we do this? Well, a lot of websites will repeat similar elements to display information. These elements are usually formatted the same way, so we can search for these elements and find what we want easily. Patterns and repetition are some of the most important things in web scraping. How might a page be organized such that you know where to find information easily?
+
+### Note: Ethics and Web Scraping
+* Make requests at a conservative rate (do not DDoS people)
+* Don't pass a site's data as your own
+* Don't scrape data you are not authorized to have
 ## Goal and Motivation
 **Our Goal**: We want to be able to write a program that can automatically find useful information on webpages
 
@@ -89,14 +96,6 @@ An HTML file is structured as a tree.  This means that there is one big element,
 <img src="assets/html-code.png" width="33%"><img src="assets/html-tree.svg" width="33%"><img src="assets/html-page.png" width="33%">
 
 A lot of web pages will **reuse elements**.  We can use this to our advantage because the format of the file becomes repetitive and predictable. We will see an example of this when we start web scraping.
-
-## What is Web Scraping
-Web scraping is the (usually automated) process of extracting data from the web. For example, if you manually used the internet to take note of a few stock prices then you are technically web scraping. Our goal, however, is to automate this mundane task. How do we do this? Well, a lot of websites will repeat similar elements to display information. These elements are usually formatted the same way, so we can search for these elements and find what we want easily. Patterns and repetition are some of the most important things in web scraping. How might a page be organized such that you know where to find information easily?
-
-### Note: Ethics and Web Scraping
-* Make requests at a conservative rate (do not DDoS people)
-* Don't pass a site's data as your own
-* Don't scrape data you are not authorized to have
 
 ## JavaScript: A Wrench in the Plan
 Before pages were commonly rendered on the client using JavaScript, it was often effective to request a page, then search that page for information. However, if you try that on a page rendered with javascript, you will usually find yourself searching a page with little to no content.

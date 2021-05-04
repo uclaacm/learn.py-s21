@@ -4,6 +4,7 @@ URL = 'https://www.mtgstocks.com/interests'
 CHROMEDRIVER_PATH = '/usr/local/bin/chromeDriver'
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
 
 class Card:
 	def __init__(self, list_from_site):
@@ -19,12 +20,13 @@ def getCards():
 	driver = webdriver.Chrome(CHROMEDRIVER_PATH, options=options)
 	driver.implicitly_wait(15)
 	driver.get(URL)
-	tables = driver.find_elements_by_tag_name("table")
+	tables = driver.find_elements(By.TAG_NAME, "table")
 	print(driver.title)
 	# Find the rows in the body of the first table
-	rows = tables[0].find_element_by_tag_name("tbody").find_elements_by_tag_name("tr")
+	body = tables[0].find_element(By.TAG_NAME, "tbody")
+	rows = body.find_elements(By.TAG_NAME, "tr")
 	# Get a list of cards by parsing each row.
-	cards = [Card([col.text for col in row.find_elements_by_tag_name("td")]) for row in rows]
+	cards = [Card([col.text for col in row.find_elements(By.TAG_NAME, "td")]) for row in rows]
 	driver.quit()
 	return cards
 

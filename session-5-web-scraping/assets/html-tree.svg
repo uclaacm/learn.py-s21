@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
-
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
@@ -13,8 +11,11 @@
    height="442.63727"
    id="svg2"
    version="1.1"
-   inkscape:version="0.48.0 r9654"
-   sodipodi:docname="js-dom-model.svg">
+   inkscape:version="1.0.1 (c497b03c, 2020-09-10)"
+   sodipodi:docname="html-tree.svg"
+   inkscape:export-filename="/Users/timthetic/Developer/learn.py-s21/session-5-web-scraping/assets/html-tree.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96">
   <defs
      id="defs4">
     <filter
@@ -35,20 +36,21 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.80925069"
-     inkscape:cx="-79.46492"
-     inkscape:cy="313.37544"
+     inkscape:cx="239.34852"
+     inkscape:cy="282.48266"
      inkscape:document-units="px"
      inkscape:current-layer="g4198"
      showgrid="false"
      inkscape:window-width="1051"
      inkscape:window-height="742"
      inkscape:window-x="38"
-     inkscape:window-y="14"
+     inkscape:window-y="23"
      inkscape:window-maximized="0"
      fit-margin-top="0"
      fit-margin-left="0"
      fit-margin-right="0"
-     fit-margin-bottom="0" />
+     fit-margin-bottom="0"
+     inkscape:document-rotation="0" />
   <metadata
      id="metadata7">
     <rdf:RDF>
@@ -57,7 +59,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -68,15 +70,15 @@
      transform="translate(-111.95557,-75.517533)">
     <text
        xml:space="preserve"
-       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
        x="538.22076"
        y="1137.5482"
-       id="text3883"
-       sodipodi:linespacing="125%"><tspan
+       id="text3883"><tspan
          sodipodi:role="line"
          id="tspan3885"
          x="538.22076"
-         y="1137.5482" /></text>
+         y="1137.5482"
+         style="font-size:40px;line-height:1.25;font-family:sans-serif"> </tspan></text>
     <g
        id="g4078"
        transform="matrix(0.34464929,0,0,0.34464929,126.32314,-2.5347604)"
@@ -169,27 +171,26 @@
          style="fill:#aaccff;fill-opacity:1;stroke:#0044aa;stroke-width:6;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
       <text
          xml:space="preserve"
-         style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
          x="391.51157"
          y="538.34198"
-         id="text3805"
-         sodipodi:linespacing="125%"><tspan
+         id="text3805"><tspan
            sodipodi:role="line"
            id="tspan3807"
            x="391.51157"
            y="538.34198"
-           style="font-size:28px">Element:</tspan></text>
+           style="font-size:28px;line-height:1.25;font-family:sans-serif">Element:</tspan></text>
       <text
-         sodipodi:linespacing="125%"
          id="text3809"
          y="600.29541"
          x="373.11911"
-         style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
          xml:space="preserve"><tspan
            y="600.29541"
            x="373.11911"
            id="tspan3811"
-           sodipodi:role="line">&lt;head&gt;</tspan></text>
+           sodipodi:role="line"
+           style="font-size:40px;line-height:1.25;font-family:sans-serif">&lt;head&gt;</tspan></text>
       <rect
          ry="27.695412"
          y="828.12085"
@@ -207,28 +208,27 @@
          y="819.40863"
          ry="27.695412" />
       <text
-         sodipodi:linespacing="125%"
          id="text3819"
          y="854.34198"
          x="393.51157"
-         style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
          xml:space="preserve"><tspan
-           style="font-size:28px"
+           style="font-size:28px;line-height:1.25;font-family:sans-serif"
            y="854.34198"
            x="393.51157"
            id="tspan3821"
            sodipodi:role="line">Element:</tspan></text>
       <text
          xml:space="preserve"
-         style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
          x="375.11911"
          y="916.29541"
-         id="text3823"
-         sodipodi:linespacing="125%"><tspan
+         id="text3823"><tspan
            sodipodi:role="line"
            id="tspan3825"
            x="375.11911"
-           y="916.29541">&lt;body&gt;</tspan></text>
+           y="916.29541"
+           style="font-size:40px;line-height:1.25;font-family:sans-serif">&lt;body&gt;</tspan></text>
       <g
          transform="translate(230.98334,11.636933)"
          id="g4033">
@@ -254,27 +254,26 @@
         </g>
         <text
            xml:space="preserve"
-           style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+           style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
            x="439.93011"
            y="675.80121"
-           id="text3833"
-           sodipodi:linespacing="125%"><tspan
+           id="text3833"><tspan
              sodipodi:role="line"
              id="tspan3835"
              x="439.93011"
              y="675.80121"
-             style="font-size:28px">Element:</tspan></text>
+             style="font-size:28px;line-height:1.25;font-family:sans-serif">Element:</tspan></text>
         <text
-           sodipodi:linespacing="125%"
            id="text3837"
            y="737.75464"
            x="431.53766"
-           style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+           style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
            xml:space="preserve"><tspan
              y="737.75464"
              x="431.53766"
              id="tspan3839"
-             sodipodi:role="line">&lt;title&gt;</tspan></text>
+             sodipodi:role="line"
+             style="font-size:40px;line-height:1.25;font-family:sans-serif">&lt;title&gt;</tspan></text>
       </g>
       <g
          transform="translate(270.33054,11.636933)"
@@ -299,28 +298,27 @@
              style="fill:#e9ddaf;fill-opacity:1;stroke:#806600;stroke-width:6;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
         </g>
         <text
-           sodipodi:linespacing="125%"
            id="text3847"
            y="815.80121"
            x="545.93011"
-           style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+           style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
            xml:space="preserve"><tspan
-             style="font-size:28px"
+             style="font-size:28px;line-height:1.25;font-family:sans-serif"
              y="815.80121"
              x="545.93011"
              id="tspan3849"
              sodipodi:role="line">Text:</tspan></text>
         <text
            xml:space="preserve"
-           style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+           style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
            x="479.53766"
            y="877.75464"
-           id="text3851"
-           sodipodi:linespacing="125%"><tspan
+           id="text3851"><tspan
              sodipodi:role="line"
              id="tspan3853"
              x="479.53766"
-             y="877.75464">&quot;My title&quot;</tspan></text>
+             y="877.75464"
+             style="font-size:40px;line-height:1.25;font-family:sans-serif">&quot;My title&quot;</tspan></text>
       </g>
       <g
          transform="translate(241.7004,-92)"
@@ -346,30 +344,29 @@
              style="fill:#ffdd55;fill-opacity:1;stroke:#806600;stroke-width:6;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
         </g>
         <text
-           sodipodi:linespacing="125%"
            id="text3861"
            y="1086.1809"
            x="433.53671"
-           style="font-size:39.96372604px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+           style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
            xml:space="preserve"
            transform="scale(1.0009076,0.99909323)"><tspan
-             style="font-size:27.97460938px"
+             style="font-size:27.9746px;line-height:1.25;font-family:sans-serif"
              y="1086.1809"
              x="433.53671"
              id="tspan3863"
              sodipodi:role="line">Element:</tspan></text>
         <text
            xml:space="preserve"
-           style="font-size:39.96372604px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+           style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
            x="434.8233"
            y="1148.0782"
            id="text3865"
-           sodipodi:linespacing="125%"
            transform="scale(1.0009076,0.99909323)"><tspan
              sodipodi:role="line"
              id="tspan3867"
              x="434.8233"
-             y="1148.0782">&lt;h1&gt;</tspan></text>
+             y="1148.0782"
+             style="font-size:39.9637px;line-height:1.25;font-family:sans-serif">&lt;h1&gt;</tspan></text>
       </g>
       <g
          transform="translate(225.92847,-92)"
@@ -396,29 +393,28 @@
         </g>
         <text
            xml:space="preserve"
-           style="font-size:39.96372604px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+           style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
            x="583.39789"
            y="1226.0541"
            id="text3875"
-           sodipodi:linespacing="125%"
            transform="scale(1.0009076,0.99909323)"><tspan
              sodipodi:role="line"
              id="tspan3877"
              x="583.39789"
              y="1226.0541"
-             style="font-size:27.97460938px">Text:</tspan></text>
+             style="font-size:27.9746px;line-height:1.25;font-family:sans-serif">Text:</tspan></text>
         <text
-           sodipodi:linespacing="125%"
            id="text3879"
            y="1287.9513"
            x="505.48602"
-           style="font-size:39.96372604px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+           style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
            xml:space="preserve"
            transform="scale(1.0009076,0.99909323)"><tspan
              y="1287.9513"
              x="505.48602"
              id="tspan3881"
-             sodipodi:role="line">&quot;A heading&quot;</tspan></text>
+             sodipodi:role="line"
+             style="font-size:39.9637px;line-height:1.25;font-family:sans-serif">&quot;A heading&quot;</tspan></text>
       </g>
       <g
          transform="translate(241.67533,-92)"
@@ -446,28 +442,27 @@
         <text
            transform="scale(1.0009076,0.99909323)"
            xml:space="preserve"
-           style="font-size:39.96372604px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+           style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
            x="437.53271"
            y="1367.1624"
-           id="text3893"
-           sodipodi:linespacing="125%"><tspan
+           id="text3893"><tspan
              sodipodi:role="line"
              id="tspan3895"
              x="437.53271"
              y="1367.1624"
-             style="font-size:27.97460938px">Element:</tspan></text>
+             style="font-size:27.9746px;line-height:1.25;font-family:sans-serif">Element:</tspan></text>
         <text
            transform="scale(1.0009076,0.99909323)"
-           sodipodi:linespacing="125%"
            id="text3897"
            y="1427.1219"
            x="456.22791"
-           style="font-size:39.96372604px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+           style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
            xml:space="preserve"><tspan
              y="1427.1219"
              x="456.22791"
              id="tspan3899"
-             sodipodi:role="line">&lt;a&gt;</tspan></text>
+             sodipodi:role="line"
+             style="font-size:39.9637px;line-height:1.25;font-family:sans-serif">&lt;a&gt;</tspan></text>
       </g>
       <g
          transform="translate(277.96028,-92)"
@@ -502,13 +497,12 @@
         </g>
         <text
            transform="scale(1.0009076,0.99909323)"
-           sodipodi:linespacing="125%"
            id="text3907"
            y="1507.0355"
            x="531.44537"
-           style="font-size:39.96372604px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+           style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
            xml:space="preserve"><tspan
-             style="font-size:27.97460938px"
+             style="font-size:27.9746px;line-height:1.25;font-family:sans-serif"
              y="1507.0355"
              x="531.44537"
              id="tspan3909"
@@ -516,40 +510,38 @@
         <text
            transform="scale(1.0009076,0.99909323)"
            xml:space="preserve"
-           style="font-size:39.96372604px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+           style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
            x="465.1131"
            y="1568.9327"
-           id="text3911"
-           sodipodi:linespacing="125%"><tspan
+           id="text3911"><tspan
              sodipodi:role="line"
              id="tspan3913"
              x="465.1131"
-             y="1568.9327">&quot;Link text&quot;</tspan></text>
+             y="1568.9327"
+             style="font-size:39.9637px;line-height:1.25;font-family:sans-serif">&quot;Link text&quot;</tspan></text>
         <g
            id="g4198"
            transform="translate(17.927079,-175.68538)">
           <text
-             transform="matrix(0,-1,1,0,0,0)"
-             sodipodi:linespacing="125%"
+             transform="rotate(-90)"
              id="text4190"
              y="-199.5049"
              x="-1330.9348"
-             style="font-size:165.97059631px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
              xml:space="preserve"><tspan
-               style="font-size:165.97061157px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:American Typewriter;-inkscape-font-specification:American Typewriter"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:165.971px;line-height:125%;font-family:'American Typewriter';-inkscape-font-specification:'American Typewriter';text-align:start;writing-mode:lr-tb;text-anchor:start"
                y="-199.5049"
                x="-1330.9348"
                id="tspan4192"
                sodipodi:role="line">DOM</tspan></text>
           <text
-             transform="matrix(0,-1,1,0,0,0)"
-             sodipodi:linespacing="125%"
+             transform="rotate(-90)"
              id="text4194"
              y="-161.71373"
              x="-1331.5457"
-             style="font-size:34.08176422px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
              xml:space="preserve"><tspan
-               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:American Typewriter;-inkscape-font-specification:American Typewriter"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:34.0818px;line-height:1.25;font-family:'American Typewriter';-inkscape-font-specification:'American Typewriter'"
                y="-161.71373"
                x="-1331.5457"
                id="tspan4196"
@@ -582,15 +574,15 @@
            ry="27.695412" />
         <text
            xml:space="preserve"
-           style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+           style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
            x="90.994164"
            y="301.17636"
-           id="text3787"
-           sodipodi:linespacing="125%"><tspan
+           id="text3787"><tspan
              sodipodi:role="line"
              id="tspan3789"
              x="90.994164"
-             y="301.17636">document</tspan></text>
+             y="301.17636"
+             style="font-size:40px;line-height:1.25;font-family:sans-serif">document</tspan></text>
       </g>
       <rect
          transform="matrix(1,0,0,0.99818729,847.24659,1010.0123)"
@@ -612,28 +604,27 @@
       <text
          transform="scale(1.0009076,0.99909323)"
          xml:space="preserve"
-         style="font-size:39.96372604px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
          x="977.04089"
          y="1275.0786"
-         id="text3921"
-         sodipodi:linespacing="125%"><tspan
+         id="text3921"><tspan
            sodipodi:role="line"
            id="tspan3923"
            x="977.04089"
            y="1275.0786"
-           style="font-size:27.97460938px">Attribute:</tspan></text>
+           style="font-size:27.9746px;line-height:1.25;font-family:sans-serif">Attribute:</tspan></text>
       <text
          transform="scale(1.0009076,0.99909323)"
-         sodipodi:linespacing="125%"
          id="text3925"
          y="1335.0382"
          x="995.73578"
-         style="font-size:39.96372604px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
          xml:space="preserve"><tspan
            y="1335.0382"
            x="995.73578"
            id="tspan3927"
-           sodipodi:role="line">href</tspan></text>
+           sodipodi:role="line"
+           style="font-size:39.9637px;line-height:1.25;font-family:sans-serif">href</tspan></text>
       <path
          style="fill:none;stroke:#000000;stroke-width:16;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
          d="m 211.96829,418.58081 -118.49118,0"
@@ -648,28 +639,27 @@
          y="364.98132"
          ry="27.695412" />
       <text
-         sodipodi:linespacing="125%"
          id="text3791"
          y="399.91467"
          x="186.82845"
-         style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
          xml:space="preserve"><tspan
-           style="font-size:28px"
+           style="font-size:28px;line-height:1.25;font-family:sans-serif"
            y="399.91467"
            x="186.82845"
            id="tspan3793"
            sodipodi:role="line">Root element:</tspan></text>
       <text
          xml:space="preserve"
-         style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
          x="204.25285"
          y="461.86813"
-         id="text3795"
-         sodipodi:linespacing="125%"><tspan
+         id="text3795"><tspan
            sodipodi:role="line"
            id="tspan3797"
            x="204.25285"
-           y="461.86813">&lt;html&gt;</tspan></text>
+           y="461.86813"
+           style="font-size:40px;line-height:1.25;font-family:sans-serif">&lt;html&gt;</tspan></text>
     </g>
   </g>
 </svg>
