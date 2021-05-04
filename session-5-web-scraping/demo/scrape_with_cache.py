@@ -37,19 +37,18 @@ def getCache():
 def fillCache():
 	options = Options()
 	options.add_argument('--headless')
-	driver = webdriver.Chrome(CHROMEDRIVER_PATH, options=options)
-	driver.implicitly_wait(15)
-	driver.get(URL)
-	tables = driver.find_elements(By.TAG_NAME, "table")
-	print(driver.title)
-	body = tables[0].find_element(By.TAG_NAME, "tbody")
-	rows = body.find_elements(By.TAG_NAME, "tr")
-	cards = [[col.text for col in row.find_elements(By.TAG_NAME, "td")] for row in rows]
-	with open("cards.csv", "w") as f:
-		f.write(str(time.time()) + "\n")
-		for card in cards:
-			f.write(",".join(card) + "\n")
-	driver.quit()
+	with webdriver.Chrome(CHROMEDRIVER_PATH, options=options) as driver:
+		driver.implicitly_wait(15)
+		driver.get(URL)
+		tables = driver.find_elements(By.TAG_NAME, "table")
+		print(driver.title)
+		body = tables[0].find_element(By.TAG_NAME, "tbody")
+		rows = body.find_elements(By.TAG_NAME, "tr")
+		cards = [[col.text for col in row.find_elements(By.TAG_NAME, "td")] for row in rows]
+		with open("cards.csv", "w") as f:
+			f.write(str(time.time()) + "\n")
+			for card in cards:
+				f.write(",".join(card) + "\n")
 	return [Card(card) for card in cards]
 
 def lookForFavoriteCards(favoriteCards):

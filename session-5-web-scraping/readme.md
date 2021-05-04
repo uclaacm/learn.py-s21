@@ -140,6 +140,7 @@ Let's start with a skeleton of our program. I've filled in the `Card` class alre
 ```py
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
 
 URL = 'https://www.mtgstocks.com/interests'
 CHROMEDRIVER_PATH = '[REPLACE_WITH_PATH_TO_CHROMEDRIVER]'
@@ -186,17 +187,16 @@ This is where we use Selenium. All we need to do here is tell Selenium to open C
 def getCards():
 	options = Options()
 	options.add_argument('--headless')
-	options.add_argument('--disable-gpu')
-	driver = webdriver.Chrome(CHROMEDRIVER_PATH, options=options)
-	driver.implicitly_wait(15)
-	driver.get(URL)
-	tables = driver.find_elements_by_tag_name("table")
-	print(driver.title)
-	# Find the rows in the body of the first table
-	rows = tables[0].find_element_by_tag_name("tbody").find_elements_by_tag_name("tr")
-	# Get a list of cards by parsing each row.
-	cards = [Card([col.text for col in row.find_elements_by_tag_name("td")]) for row in rows]
-	driver.quit()
+	with webdriver.Chrome(CHROMEDRIVER_PATH, options=options) as driver:
+		driver.implicitly_wait(15)
+		driver.get(URL)
+		tables = driver.find_elements(By.TAG_NAME, "table")
+		print(driver.title)
+		# Find the rows in the body of the first table
+		body = tables[0].find_element(By.TAG_NAME, "tbody")
+		rows = body.find_elements(By.TAG_NAME, "tr")
+		# Get a list of cards by parsing each row.
+		cards = [Card([col.text for col in row.find_elements(By.TAG_NAME, "td")]) for row in rows]
 	return cards
 ```
 
@@ -204,9 +204,9 @@ Let's break this down.
 ```py
 	options = Options()
 	options.add_argument('--headless')
-	driver = webdriver.Chrome(CHROMEDRIVER_PATH, options=options)
+	with webdriver.Chrome(CHROMEDRIVER_PATH, options=options) as driver:
 ```
-This part creates our web driver. Importantly, it uses `--headless` to tell the driver to not open an actual chrome window. Just do it in the background where I can't see it.
+This part creates our web driver. Importantly, it uses `--headless` to tell the driver to not open an actual chrome window. Just do it in the background where I can't see it. We see that we use our special `with` syntax. Selenium supports this which mean that we don't have to worry about calling `driver.quit()`! This will be done for us.
 
 <img width=200 src="./assets/Driver_of_the_chrome.jpg">
 
@@ -223,19 +223,15 @@ This loads our page.
 ```py
 print(driver.title)
 # Find the rows in the body of the first table
-rows = tables[0].find_element_by_tag_name("tbody").find_elements_by_tag_name("tr")
+body = tables[0].find_element(By.TAG_NAME, "tbody")
+rows = body.find_elements(By.TAG_NAME, "tr")
 ```
 This prints the pages title. More importantly, it finds the table body (html tag `tbody`), then gets a list of **ever row** (html tag `tr`) in that body.
 
 ```py
-cards = [Card([col.text for col in row.find_elements_by_tag_name("td")]) for row in rows]
+cards = [Card([col.text for col in row.find_elements(By.TAG_NAME, "td")]) for row in rows]
 ```
 This makes a list of Cards. For each row in the table, we make a Card using the list of columns for the constructor. 
-
-```py
-driver.quit()
-```
-This closes the browser. Please do this.
 
 ### Code: lookForFavoriteCards()
 ```py

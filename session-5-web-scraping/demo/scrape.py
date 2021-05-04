@@ -17,17 +17,16 @@ class Card:
 def getCards():
 	options = Options()
 	options.add_argument('--headless')
-	driver = webdriver.Chrome(CHROMEDRIVER_PATH, options=options)
-	driver.implicitly_wait(15)
-	driver.get(URL)
-	tables = driver.find_elements(By.TAG_NAME, "table")
-	print(driver.title)
-	# Find the rows in the body of the first table
-	body = tables[0].find_element(By.TAG_NAME, "tbody")
-	rows = body.find_elements(By.TAG_NAME, "tr")
-	# Get a list of cards by parsing each row.
-	cards = [Card([col.text for col in row.find_elements(By.TAG_NAME, "td")]) for row in rows]
-	driver.quit()
+	with webdriver.Chrome(CHROMEDRIVER_PATH, options=options) as driver:
+		driver.implicitly_wait(15)
+		driver.get(URL)
+		tables = driver.find_elements(By.TAG_NAME, "table")
+		print(driver.title)
+		# Find the rows in the body of the first table
+		body = tables[0].find_element(By.TAG_NAME, "tbody")
+		rows = body.find_elements(By.TAG_NAME, "tr")
+		# Get a list of cards by parsing each row.
+		cards = [Card([col.text for col in row.find_elements(By.TAG_NAME, "td")]) for row in rows]
 	return cards
 
 def lookForFavoriteCards(favoriteCards):
