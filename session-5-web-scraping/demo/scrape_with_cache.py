@@ -44,7 +44,10 @@ def fillCache():
 		print(driver.title)
 		body = tables[0].find_element(By.TAG_NAME, "tbody")
 		rows = body.find_elements(By.TAG_NAME, "tr")
-		cards = [[col.text for col in row.find_elements(By.TAG_NAME, "td")] for row in rows]
+		cards = []
+		for row in rows:
+			cols = row.find_elements(By.TAG_NAME, "td")
+			cards.append([col.text for col in cols])
 		with open("cards.csv", "w") as f:
 			f.write(str(time.time()) + "\n")
 			for card in cards:

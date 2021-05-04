@@ -196,7 +196,10 @@ def getCards():
 		body = tables[0].find_element(By.TAG_NAME, "tbody")
 		rows = body.find_elements(By.TAG_NAME, "tr")
 		# Get a list of cards by parsing each row.
-		cards = [Card([col.text for col in row.find_elements(By.TAG_NAME, "td")]) for row in rows]
+		cards = []
+		for row in rows:
+			cols = row.find_elements(By.TAG_NAME, "td")
+			cards.append(Card([col.text for col in cols]))
 	return cards
 ```
 
@@ -229,7 +232,10 @@ rows = body.find_elements(By.TAG_NAME, "tr")
 This prints the pages title. More importantly, it finds the table body (html tag `tbody`), then gets a list of **ever row** (html tag `tr`) in that body.
 
 ```py
-cards = [Card([col.text for col in row.find_elements(By.TAG_NAME, "td")]) for row in rows]
+cards = []
+for row in rows:
+	cols = row.find_elements(By.TAG_NAME, "td")
+	cards.append(Card([col.text for col in cols]))
 ```
 This makes a list of Cards. For each row in the table, we make a Card using the list of columns for the constructor. 
 

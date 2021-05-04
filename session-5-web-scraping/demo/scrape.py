@@ -26,7 +26,10 @@ def getCards():
 		body = tables[0].find_element(By.TAG_NAME, "tbody")
 		rows = body.find_elements(By.TAG_NAME, "tr")
 		# Get a list of cards by parsing each row.
-		cards = [Card([col.text for col in row.find_elements(By.TAG_NAME, "td")]) for row in rows]
+		cards = []
+		for row in rows:
+			cols = row.find_elements(By.TAG_NAME, "td")
+			cards.append(Card([col.text for col in cols]))
 	return cards
 
 def lookForFavoriteCards(favoriteCards):
