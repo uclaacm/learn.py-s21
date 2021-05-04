@@ -29,8 +29,8 @@
 	- [Outline](#outline)
 	- [Code: Start](#code-start)
 	- [Code: Card Class](#code-card-class)
-	- [Code: getCards()](#code-getcards)
-	- [Code: lookForFavoriteCards()](#code-lookforfavoritecards)
+	- [Code: get_cards()](#code-get_cards)
+	- [Code: look_for_favorite_cards()](#code-look_for_favorite_cards)
 	- [Code: We're done!](#code-were-done)
 	- [Tip: Store Data to Prevent Excessive Requests!](#tip-store-data-to-prevent-excessive-requests)
 - [Reverse Engineering](#reverse-engineering)
@@ -129,9 +129,9 @@ We're going to write one class and two functions.
 * `Card`: A convenient way to store the information about a card in one place
 
 **Functions**
-* `getCards()`: Scrape a list of cards object from mtgstocks and return that list
+* `get_cards()`: Scrape a list of cards object from mtgstocks and return that list
   * Returns: list of cards
-* `lookForFavoriteCards(favoriteCards)`: Call `getCards()`, then search the results for any cards in `favoriteCards` and print them.
+* `look_for_favorite_cards(favorite_cards)`: Call `get_cards()`, then search the results for any cards in `favorite_cards` and print them.
   * Arguments: a list of strings (card names)
   * Returns: None
 
@@ -149,16 +149,16 @@ class Card:
 	def __init__(self, ...):
 		# TODO
 
-def getCards():
+def get_cards():
 	# TODO
 
-def lookForFavoriteCards(favoriteCards):
-	cards = getCards()
+def look_for_favorite_cards(favorite_cards):
+	cards = get_cards()
 	for card in cards:
-		if card.name in favoriteCards:
+		if card.name in favorite_cards:
 			# TODO: print message that card went up or down in price
 
-lookForFavoriteCards(["Reverse Damage", "Ripjaw Raptor", "Ashnod's Altar", "Scrap Mastery"])
+look_for_favorite_cards(["Reverse Damage", "Ripjaw Raptor", "Ashnod's Altar", "Scrap Mastery"])
 ```
 > **\[REPLACE_WITH_PATH_TO_CHROMEDRIVER\]**: This was `"/usr/local/bin/chromeDriver"` for me but it might be different for you! You can use `which chromeDriver` on MacOS or Linux to find the path. On Windows, try `where chromeDriver`.
 
@@ -178,13 +178,13 @@ class Card:
 You may ask why the constructor for `Card` accepts a list. The answer is that I'm lazy, and this will help us later. Effectively, I am making it `Card`s responsibility to take a row's list of columns and translate it into something easier to use. In a way, it is just **translating**.
 
 
-### Code: getCards()
+### Code: get_cards()
 This is where we use Selenium. All we need to do here is tell Selenium to open Chrome, got to [mtgstocks.com](https://www.mtgstocks.com), find the table, read all the rows to us, **THEN CLOSE THE BROWSER SO CHROME DOESN'T CONSUM*E ALL YO*UR CPU/RAM LIKE THE ELD`RAZ`I TITAN`S C`ONS*UMED T*HE P`LANE OF Z`~~ENDI~~`KAR L`EA*VING ON*LY ~~DES~~T*RUCTI*`ON` AND** WA<sup>S</sup>T<sub>E</sub>~~LAND~~ IN <sup>TH<sup>EI</sup>R WA</sup>KE. O<sup>H</sup> `NO` I<sub>T'</sub><sup>S</sup> T<sub>H<sub>E</sub>M RU</sub>N.
 
 <img width=200 src="./assets/emrakul.jpeg">
 
 ```py
-def getCards():
+def get_cards():
 	options = Options()
 	options.add_argument('--headless')
 	with webdriver.Chrome(CHROMEDRIVER_PATH, options=options) as driver:
@@ -239,24 +239,24 @@ for row in rows:
 ```
 This makes a list of Cards. For each row in the table, we make a Card using the list of columns for the constructor. 
 
-### Code: lookForFavoriteCards()
+### Code: look_for_favorite_cards()
 ```py
-def lookForFavoriteCards(favoriteCards):
-	cards = getCards()
+def look_for_favorite_cards(favorite_cards):
+	cards = get_cards()
 	for card in cards:
-		if card.name in favoriteCards:
+		if card.name in favorite_cards:
 			if card.change[0] == "+":
 				print(f"Woah! {card.name} went up by {card.change}")
 			else:
 				print(f"Woah! {card.name} went down by {card.change}")
 ```
-There's not too much to explain here. For each card that's also in our `favoriteCards` print a message. We check if the card's price increased by checking if the first character of the change is "+". A somewhat barbaric method, but suitable enough.
+There's not too much to explain here. For each card that's also in our `favorite_cards` print a message. We check if the card's price increased by checking if the first character of the change is "+". A somewhat barbaric method, but suitable enough.
 
 ### Code: We're done!
 
-Let's try calling `lookForFavoriteCards` with a list of cards that includes one that went up today on [mtgstocks.com/interests](https://www.mtgstocks.com/interests)
+Let's try calling `look_for_favorite_cards` with a list of cards that includes one that went up today on [mtgstocks.com/interests](https://www.mtgstocks.com/interests)
 ```py
-lookForFavoriteCards(["Reverse Damage", "Ripjaw Raptor", "Ashnod's Altar", "Scrap Mastery"])
+look_for_favorite_cards(["Reverse Damage", "Ripjaw Raptor", "Ashnod's Altar", "Scrap Mastery"])
 ```
 The output should look something like this
 ```
@@ -264,7 +264,7 @@ Interests - MTGStocks
 Woah! Scrap Mastery went up by +161.90%
 Woah! Scrap Mastery went up by +79.36%
 ```
-Since prices change every day, Scrap Mastery may not be on the list. So if you get different cards, that's okay. If you get only the first line, try adding a card that has changed in price to your `favoriteCards`.
+Since prices change every day, Scrap Mastery may not be on the list. So if you get different cards, that's okay. If you get only the first line, try adding a card that has changed in price to your `favorite_cards`.
 
 ### Tip: Store Data to Prevent Excessive Requests!
 <img width=200 src="./assets/remember_the_entries.jpg" style="float: right;">
@@ -285,7 +285,7 @@ This time, we'll have three functions:
 	```
 	* Arguments: None
 	* Returns: List of cards
-* **lookForFavoriteCards**: Same as before.
+* **look_for_favorite_cards**: Same as before.
 
 We don't have time to go over all of this, but I've included the full program (scrape_with_cache.py). In this repository.
 
@@ -312,7 +312,7 @@ If we look at the headers tab, we see that we can access this information at `"h
 ```py
 import requests
 
-def lookForFavoriteCards(favoriteCards):
+def look_for_favorite_cards(favorite_cards):
 	# Get the list of cards
 	res = requests.get("https://api.mtgstocks.com/interests/average")
 	# Try to Parse the list using JSON
@@ -332,13 +332,13 @@ def lookForFavoriteCards(favoriteCards):
 	cards = filter(lambda card: card["print"]["include_default"] and card["interest_type"] == "day", cards)
 	# Then, we just look through our cards like normal
 	for card in cards:
-		if card["print"]["name"] in favoriteCards:
+		if card["print"]["name"] in favorite_cards:
 			if card["percentage"] > 0:
 				print(f"Woah! {card['print']['name']} increased by {card['percentage']}%")
 			else:
 				print(f"Drat! {card['print']['name']} decreased by {abs(card['percentage'])}%")
 
-lookForFavoriteCards(["Primal Amulet", "Ashnod's Altar"])
+look_for_favorite_cards(["Primal Amulet", "Ashnod's Altar"])
 ```
 
 This is it. This is the entire program. Easy right? It's not always the case that you can do this, and it takes some work to interpret the network tab, but now we don't have to run Chrome every time we run our program! You should notice that it is faster as well!

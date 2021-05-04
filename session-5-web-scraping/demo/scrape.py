@@ -1,10 +1,9 @@
-# Poll: How familiar are you with HTML
-
-URL = 'https://www.mtgstocks.com/interests'
-CHROMEDRIVER_PATH = '/usr/local/bin/chromeDriver'
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
+
+URL = 'https://www.mtgstocks.com/interests'
+CHROMEDRIVER_PATH = '/usr/local/bin/chromeDriver'
 
 class Card:
 	def __init__(self, list_from_site):
@@ -14,7 +13,7 @@ class Card:
 		self.old_price = list_from_site[3]
 		self.change = list_from_site[4]
 
-def getCards():
+def get_cards():
 	options = Options()
 	options.add_argument('--headless')
 	with webdriver.Chrome(CHROMEDRIVER_PATH, options=options) as driver:
@@ -32,13 +31,13 @@ def getCards():
 			cards.append(Card([col.text for col in cols]))
 	return cards
 
-def lookForFavoriteCards(favoriteCards):
-	rows = getCards()
+def look_for_favorite_cards(favorite_cards):
+	rows = get_cards()
 	for card in rows:
-		if card.name in favoriteCards:
+		if card.name in favorite_cards:
 			if card.change[0] == "+":
 				print(f"Woah! {card.name} from {card.release_set} went up by {card.change}")
 			else:
 				print(f"Woah! {card.name} from {card.release_set} went down by {card.change}")
 
-lookForFavoriteCards(["Reverse Damage", "Ripjaw Raptor", "Ashnod's Altar", "Scrap Mastery"])
+look_for_favorite_cards(["Reverse Damage", "Ripjaw Raptor", "Ashnod's Altar", "Scrap Mastery"])
