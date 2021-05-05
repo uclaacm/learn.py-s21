@@ -8,7 +8,7 @@
 
 ## Resources <!-- omit in toc -->
 
-- [Slides](https://docs.google.com/presentation/d/1JKIXgOLKNuJj7zGxKSG4leX-1PoU2lQDoriBueyQdfY/edit?usp=sharing)
+- [Slides](links.uclaacm.com/learnpy21-s5-slides)
 - [ACM Membership Attendance Portal](https://members.uclaacm.com/login)
 
 ## What we'll be learning today <!-- omit in toc -->
