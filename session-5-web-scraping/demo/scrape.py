@@ -3,7 +3,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 
 URL = 'https://www.mtgstocks.com/interests'
-CHROMEDRIVER_PATH = '/usr/local/bin/chromeDriver'
+CHROMEDRIVER_PATH = './chromedriver'
 
 class Card:
 	def __init__(self, list_from_site):
@@ -40,4 +40,4 @@ def look_for_favorite_cards(favorite_cards):
 			else:
 				print(f"Woah! {card.name} from {card.release_set} went down by {card.change}")
 
-look_for_favorite_cards(["Reverse Damage", "Ripjaw Raptor", "Ashnod's Altar", "Scrap Mastery"])
+look_for_favorite_cards(["Reverse Damage", "Ripjaw Raptor", "Ashnod\'s Altar", "Scrap Mastery"])

@@ -182,6 +182,8 @@ This is where we use Selenium. All we need to do here is tell Selenium to open C
 
 <img width=200 src="./assets/emrakul.jpeg">
 
+> Tip: Unsure about what you found? You can use `el.get_attribute("outerHTML")` to get a better understanding of the element you found.
+
 ```py
 def get_cards():
 	options = Options()
