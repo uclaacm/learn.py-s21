@@ -160,8 +160,7 @@ def look_for_favorite_cards(favorite_cards):
 
 look_for_favorite_cards(["Reverse Damage", "Ripjaw Raptor", "Ashnod's Altar", "Scrap Mastery"])
 ```
-> **\[REPLACE_WITH_PATH_TO_CHROMEDRIVER\]**: This was `"/usr/local/bin/chromeDriver"` for me but it might be different for you! You can use `which chromeDriver` on MacOS or Linux to find the path. On Windows, try `where chromeDriver`.
-
+> **\[REPLACE_WITH_PATH_TO_CHROMEDRIVER\]**: The thing you should have downloaded is an executable, so you can just copy the path to that file.
 ### Code: Card Class
 MTGStocks seems to store 5 things about a card. Name, Set, New Price, Old Price, and Change. Let's just store those.
 
