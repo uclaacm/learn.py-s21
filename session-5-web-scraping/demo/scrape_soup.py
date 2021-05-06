@@ -3,7 +3,6 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
-import cProfile
 from bs4 import BeautifulSoup
 
 URL = 'https://www.mtgstocks.com/interests'
@@ -28,6 +27,7 @@ def get_cards():
 		driver.find_elements(By.TAG_NAME, "table")
 		source = driver.page_source
 		soup = BeautifulSoup(source)
+		print(driver.title)
 		tables = soup.find_all("table")
 		body = tables[1].find("tbody")
 		rows = body.find_all("tr")

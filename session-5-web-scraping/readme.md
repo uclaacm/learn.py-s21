@@ -27,9 +27,9 @@
 	- [Background](#background)
 	- [The HTML of MTGStocks](#the-html-of-mtgstocks)
 	- [Outline](#outline)
-	- [Code: Start](#code-start)
+	- [Code: Start **✨Modified to Use BeautifulSoup!✨**](#code-start-modified-to-use-beautifulsoup)
 	- [Code: Card Class](#code-card-class)
-	- [Code: get_cards()](#code-get_cards)
+	- [Code: get_cards() **✨Modified to Use BeautifulSoup!✨**](#code-get_cards-modified-to-use-beautifulsoup)
 	- [Code: look_for_favorite_cards()](#code-look_for_favorite_cards)
 	- [Code: We're done!](#code-were-done)
 	- [Tip: Store Data to Prevent Excessive Requests!](#tip-store-data-to-prevent-excessive-requests)
@@ -135,28 +135,57 @@ We're going to write one class and two functions.
   * Arguments: a list of strings (card names)
   * Returns: None
 
-### Code: Start
+### Code: Start **✨Modified to Use BeautifulSoup!✨**
 Let's start with a skeleton of our program. I've filled in the `Card` class already, as it is pretty basic
 ```py
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
+from bs4 import BeautifulSoup
 
 URL = 'https://www.mtgstocks.com/interests'
 CHROMEDRIVER_PATH = '[REPLACE_WITH_PATH_TO_CHROMEDRIVER]'
 
+
+URL = 'https://www.mtgstocks.com/interests'
+CHROMEDRIVER_PATH = './chromedriver'
+
 class Card:
-	def __init__(self, ...):
-		# TODO
+	def __init__(self, list_from_site):
+		self.name = list_from_site[0]
+		self.release_set = list_from_site[1]
+		self.new_price = list_from_site[2]
+		self.old_price = list_from_site[3]
+		self.change = list_from_site[4]
 
 def get_cards():
-	# TODO
+	options = Options()
+	options.add_argument('--headless')
+	with webdriver.Chrome(CHROMEDRIVER_PATH, options=options) as driver:
+		driver.implicitly_wait(10)
+		driver.get(URL)
+		# This is a hacky way to force selenium to wait until it loads the tables
+		# There are more explicit ways of doing this
+		driver.find_elements(By.TAG_NAME, "table")
+		source = driver.page_source
+		soup = BeautifulSoup(source)
+		tables = soup.find_all("table")
+		body = tables[1].find("tbody")
+		rows = body.find_all("tr")
+		cards = []
+		for row in rows:
+			cols = row.find_all("td")
+			cards.append(Card([col.text for col in cols]))
+	return cards
 
 def look_for_favorite_cards(favorite_cards):
-	cards = get_cards()
-	for card in cards:
+	rows = get_cards()
+	for card in rows:
 		if card.name in favorite_cards:
-			# TODO: print message that card went up or down in price
+			if card.change[0] == "+":
+				print(f"Woah! {card.name} from {card.release_set} went up by {card.change}")
+			else:
+				print(f"Woah! {card.name} from {card.release_set} went down by {card.change}")
 
 look_for_favorite_cards(["Reverse Damage", "Ripjaw Raptor", "Ashnod's Altar", "Scrap Mastery"])
 ```
@@ -177,7 +206,7 @@ class Card:
 You may ask why the constructor for `Card` accepts a list. The answer is that I'm lazy, and this will help us later. Effectively, I am making it `Card`s responsibility to take a row's list of columns and translate it into something easier to use. In a way, it is just **translating**.
 
 
-### Code: get_cards()
+### Code: get_cards() **✨Modified to Use BeautifulSoup!✨**
 This is where we use Selenium. All we need to do here is tell Selenium to open Chrome, got to [mtgstocks.com](https://www.mtgstocks.com), find the table, read all the rows to us, **THEN CLOSE THE BROWSER SO CHROME DOESN'T CONSUM*E ALL YO*UR CPU/RAM LIKE THE ELD`RAZ`I TITAN`S C`ONS*UMED T*HE P`LANE OF Z`~~ENDI~~`KAR L`EA*VING ON*LY ~~DES~~T*RUCTI*`ON` AND** WA<sup>S</sup>T<sub>E</sub>~~LAND~~ IN <sup>TH<sup>EI</sup>R WA</sup>KE. O<sup>H</sup> `NO` I<sub>T'</sub><sup>S</sup> T<sub>H<sub>E</sub>M RU</sub>N.
 
 <img width=200 src="./assets/emrakul.jpeg">
@@ -189,17 +218,19 @@ def get_cards():
 	options = Options()
 	options.add_argument('--headless')
 	with webdriver.Chrome(CHROMEDRIVER_PATH, options=options) as driver:
-		driver.implicitly_wait(15)
+		driver.implicitly_wait(10)
 		driver.get(URL)
-		tables = driver.find_elements(By.TAG_NAME, "table")
-		print(driver.title)
-		# Find the rows in the body of the first table
-		body = tables[0].find_element(By.TAG_NAME, "tbody")
-		rows = body.find_elements(By.TAG_NAME, "tr")
-		# Get a list of cards by parsing each row.
+		# This is a hacky way to force selenium to wait until it loads the tables
+		# There are more explicit ways of doing this
+		driver.find_elements(By.TAG_NAME, "table")
+		source = driver.page_source
+		soup = BeautifulSoup(source)
+		tables = soup.find_all("table")
+		body = tables[1].find("tbody")
+		rows = body.find_all("tr")
 		cards = []
 		for row in rows:
-			cols = row.find_elements(By.TAG_NAME, "td")
+			cols = row.find_all("td")
 			cards.append(Card([col.text for col in cols]))
 	return cards
 ```
@@ -221,21 +252,28 @@ This tells Selenium to wait for 15 seconds before timing out before failing to f
 
 ```py
 driver.get(URL)
+driver.find_elements(By.TAG_NAME, "table")
 ```
-This loads our page.
+This loads our page and tries to find the tables (waiting until they are found) which allows the page to load.
+
+```py
+source = driver.page_source
+soup = BeautifulSoup(source)
+```
+This dumps the page's source code into a BeautifulSoup object so we can search it.
 
 ```py
 print(driver.title)
-# Find the rows in the body of the first table
-body = tables[0].find_element(By.TAG_NAME, "tbody")
-rows = body.find_elements(By.TAG_NAME, "tr")
+tables = soup.find_all("table")
+body = tables[1].find("tbody")
+rows = body.find_all("tr")
 ```
-This prints the pages title. More importantly, it finds the table body (html tag `tbody`), then gets a list of **ever row** (html tag `tr`) in that body.
+This prints the pages title. More importantly, it finds the table body of the second table (html tag `tbody`), then gets a list of **every row** (html tag `tr`) in that body.
 
 ```py
 cards = []
 for row in rows:
-	cols = row.find_elements(By.TAG_NAME, "td")
+	cols = row.find_all("td")
 	cards.append(Card([col.text for col in cols]))
 ```
 This makes a list of Cards. For each row in the table, we make a Card using the list of columns for the constructor. 
