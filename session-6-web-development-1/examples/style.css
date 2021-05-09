@@ -1,0 +1,22 @@
+body {
+    text-align: center;
+}
+
+ul {
+    display: inline-block;
+    text-align: center;
+    height: 900px;
+}
+
+h1 {
+    font-size: 200%;
+    font-weight: bold;
+}
+
+li {
+    text-align: left;
+}
+
+p {
+    color: red;
+}
