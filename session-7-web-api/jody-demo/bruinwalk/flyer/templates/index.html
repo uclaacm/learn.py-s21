@@ -1,0 +1,8 @@
+<h1>Lists all the flyers</h1>
+{%if flyer_people%}
+{%for person in flyer_people%}
+<p><a href="{% url 'flyer:show_flyer' person.id %}">{{person.name}}</a>: {{person.pitch}}</p>
+{%endfor%}
+{%else%}
+<p>Thank goodness, Bruin Walk is empty</p>
+{%endif%}
