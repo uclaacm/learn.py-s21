@@ -1,0 +1,23 @@
+<h1>Lists All Flyer People</h1>
+<p>Will hold list of all flyer people on bruin walk.</p>
+
+<!-- section: This will be for template demonstrational purposes only -->
+<h2>{{ name|lower|capfirst }}, Age: {{ age }}</h2>
+<p>{{ pitch }}</p>
+
+{% comment %}
+This will not be rendered
+{% endcomment %}
+<!-- end section -->
+
+<h1>People Flyering Today</h1>
+{% if flyer_people %}
+<ul>
+{% for person in flyer_people %}
+<li><a href="{% url 'flyer:flyer_stats' 1  %}">{{ person }}</a>: {{ pitch }}</li>
+{% endfor %}
+{% else %}
+<p>Thank god.</p>
+{% endif %}
+</ul>
+
