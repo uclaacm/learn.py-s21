@@ -1,6 +1,11 @@
 <h1>Flyer Person Stats</h1>
 <p>Information about flyer person</p>
 
-<h2>{{ name }}</h2>
-<p>{{ pitch }}</p>
-<p>Flyers given: {{ flyers_given }}</p>
+<h2>{{ person.name }}</h2>
+<p>{{ person.pitch }}</p>
+<p>Flyers given: {{ person.flyers_given }}</p>
+
+<form action="{% url 'flyer:take_flyer' person.id %}" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Vote">
+</form>

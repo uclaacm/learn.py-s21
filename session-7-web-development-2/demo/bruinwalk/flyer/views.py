@@ -1,22 +1,32 @@
+from django.http.response import Http404, HttpResponseRedirect
 from django.shortcuts import render
-
+from django.urls.base import reverse
+from .models import FlyerPerson
 # Create your views here.
 
 def index(request):
+  flyer_people = FlyerPerson.objects.all()
   context = {
-    'name': 'narnar',
-    'pitch': 'come haccc with us',
-    'age': 18,
-    'flyer_people': ['tim', 'jody', 'andre']
+    'flyer_people': flyer_people
   }
   return render(request, "index.html", context)
 
 
 def flyer_stats(request, flyer_id):
+  try:
+    person = FlyerPerson.objects.get(id=flyer_id)
+  except(FlyerPerson.DoesNotExist):
+    raise Http404("Person does not exist")
   context = {
-    'name': 'Jody',
-    'pitch': 'Do you want to save the bees?',
-    'flyers_given': 0
+    'person': person
   }
   return render(request, "flyer_stats.html", context)
 
+def take_flyer(request, flyer_id):
+  try:
+    person = FlyerPerson.objects.get(id=flyer_id)
+  except(FlyerPerson.DoesNotExist):
+    raise Http404("Person does not exist")
+  person.flyers_given += 1
+  person.save()
+  return HttpResponseRedirect(reverse('flyer:flyer_stats', args=(person.id,)))
