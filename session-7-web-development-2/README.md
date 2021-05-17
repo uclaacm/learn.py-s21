@@ -4,7 +4,7 @@
 
 **Location**: Zoom
 
-**Teachers**: [Timothy Rediehs](https://github.com/timthetic)
+**Teachers**: [Timothy Rediehs](https://github.com/timthetic), [Jody Lin](https://github.com/jodymlin)
 
 ## Resources <!-- omit in toc -->
 
