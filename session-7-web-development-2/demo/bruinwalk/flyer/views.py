@@ -12,7 +12,7 @@ def index(request):
   return render(request, "index.html", context)
 
 
-def flyer_stats(request, flyer_id):
+def flyer_info(request, flyer_id):
   try:
     person = FlyerPerson.objects.get(id=flyer_id)
   except(FlyerPerson.DoesNotExist):
@@ -20,7 +20,7 @@ def flyer_stats(request, flyer_id):
   context = {
     'person': person
   }
-  return render(request, "flyer_stats.html", context)
+  return render(request, "flyer_info.html", context)
 
 def take_flyer(request, flyer_id):
   try:
@@ -29,4 +29,4 @@ def take_flyer(request, flyer_id):
     raise Http404("Person does not exist")
   person.flyers_given += 1
   person.save()
-  return HttpResponseRedirect(reverse('flyer:flyer_stats', args=(person.id,)))
+  return HttpResponseRedirect(reverse('flyer:flyer_info', args=(person.id,)))

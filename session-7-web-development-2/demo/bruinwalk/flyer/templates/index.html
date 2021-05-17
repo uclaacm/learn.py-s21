@@ -14,7 +14,7 @@ This will not be rendered
 {% if flyer_people %}
 <ul>
 {% for person in flyer_people %}
-<li><a href="{% url 'flyer:flyer_stats' person.id  %}">{{ person.name }}</a>: {{ person.pitch }}</li>
+<li><a href="{% url 'flyer:flyer_info' person.id  %}">{{ person.name }}</a>: {{ person.pitch }}</li>
 {% endfor %}
 {% else %}
 <p>Thank god.</p>
