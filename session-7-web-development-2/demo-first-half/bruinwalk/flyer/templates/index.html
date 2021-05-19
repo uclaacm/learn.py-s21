@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>Lists All Flyer People</h1>
+    <p>Will hold list of all flyer people on bruin walk.</p>
+
+    <!-- demonstration section: will get rid of this for part 2 of demo -->
+    <h2>{{ name }}, Age: {{ age }}</h2>
+    <p>{{ pitch }}</p>
+
+    {% comment %}
+    This will not be rendered
+    {% endcomment %}
+
+    {# This is a single line comment #}
+    <!-- end demonstration sections -->
+
+    <h1>People Flyering Today</h1>
+    {% if flyer_people %}
+    <ul>
+    {% for person in flyer_people %}
+      <li>
+        <a href="{% url 'flyer:flyer_info' 1  %}">{{ person }}</a>: {{ pitch }}
+      </li>
+    {% endfor %}
+    </ul>
+    {% else %}
+    <p>Thank god.</p>
+    {% endif %}
+  </body>
+</html>
