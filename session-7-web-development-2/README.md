@@ -1,4 +1,4 @@
-# learn<span>.</span>py Session 7: Web Developement 2 <!-- omit in toc -->
+# learn<span>.</span>py Session 7: Web Development 2 <!-- omit in toc -->
 
 **Date**: May 19, 2021
 
