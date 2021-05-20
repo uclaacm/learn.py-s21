@@ -10,7 +10,7 @@
     
     <form action="{% url 'flyer:take_flyer' person.id %}" method="post">
       {% csrf_token %}
-      <input type="submit" value="Vote">
+      <input type="submit" value="Take Flyer">
     </form>
   </body>
 </html>
