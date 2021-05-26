@@ -155,5 +155,5 @@ plt.plot(x, y)
 plt.title('Sine Graph', y=.96, fontsize=9)
 ```
 which plots x and y, and adds a graph title (more on those weird parameters later). Now, lets run it and see our graph!
-![](./assets/sine.png
+![Sine Graph](./part-1-numpy-matplotlib/assets/sine.png
 
