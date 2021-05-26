@@ -156,4 +156,22 @@ plt.title('Sine Graph', y=.96, fontsize=9)
 ```
 which plots x and y, and adds a graph title (more on those weird parameters later). Now, lets run it and see our graph!
 ![Sine Graph](./part-1-numpy-matplotlib/assets/sine.png)
-
+- Awesome! (Don't worry, the title will be fixed later)
+- Alright, now let's go up another step. This time, let's generate some random data, then graph it and see how it looks.
+```
+x = np.arange(0, 3 * np.pi, 0.1) 
+y = [random.randrange(-10, 10) for i in range(0, len(x))]
+```
+- This time, our x values are a range from 0 to 3pi, with steps of .1, and our y values are, for each value in x, a randomnly generated 
+  number between -10 and 10. This will probably look really interesting.
+- Now, say I want to see both my old graph, and my new graphs! Luckily, we can totally do that. So, in front of our old graph's code, lets add:
+```plt.subplot(2, 2, 1)```, which will initialize the first of four subplots in a 2 by 2 grid. That way, when we plot our first graph, it'll go
+  in the first spot.
+- Then, we can put the following in front of our second graph:
+```plt.subplot(2, 2, 2)```, which will initialize it as our second plot of 4. (if you haven't picked up by now, we're going to make 4 graphs.
+- Don't forget to also plot your second graph! 
+```plt.plot(x, y) 
+plt.title('Random', y=.96, fontsize=9)
+```
+- Now, let's see how it looks.
+- 
