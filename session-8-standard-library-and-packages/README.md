@@ -53,7 +53,7 @@
   - ```glob.glob('./[0-9].*')```
 
 
-## timit
+## timeit
 - If you're interested in checking the performance of your programs or comparing speeds of different commands,
   - the timeit library is perfect for you!
 - imported with ```import timeit```
