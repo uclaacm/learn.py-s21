@@ -55,7 +55,7 @@
 
 ## timeit
 - If you're interested in checking the performance of your programs or comparing speeds of different commands,
-  - the timeit library is perfect for you!
+  the timeit library is perfect for you!
 - imported with ```import timeit```
 - Example usage: 
   ```
@@ -67,8 +67,8 @@
 
 ## Data Structures
 - Remember stacks, queues, heaps, etc. from cs32? We can use those in python too! One of the main benefits of
-  - using data structures such as deque is that they provide quicker append and pop options than a normal list.
-Examples:
+  using data structures such as deque is that they provide quicker append and pop options than a normal list.
+- Examples:
   ```
   from collections import deque
   my_deque = deque(["Mr Krabs", "Gary", "Squidward"])
@@ -81,8 +81,57 @@ Examples:
   
   
 ## Preview Demo Libraries
-- Alright! Now that we have shown you just a couple of standard libraries you could find useful, lets talk
-  - about some of the ones we will be demoing and taking a closer look at!
-  - 
+- Alright! Now that we have shown you just a couple of standard libraries you could find useful, lets quickly
+  talk about some of the libraries we will be demoing and taking a closer look at!
+- [math](#math)
+- [random](#random)
+- [statistics](#statistics)
+- [numpy](#numpy)
+- [matplotlib](#matplotlib)
+
+
+## math
+- The math library is used for mathematical operations and constants.
+- imported with ```import math```
+- [math docs](https://docs.python.org/3/library/math.html)
+
+
+## random
+- The random library is used for generating numbers and other cool random stuff! 
+- imported with ```imported random```
+- [random docs](https://docs.python.org/3/library/random.html)
+
+
+## statistics
+- The statistics library is used for calculating basic statistical properties of numerical data.
+- This one needs to be installed:
+  - ```pip3 install statistics```
+  - imported with ```import statistics```
+- [statistics docs](https://docs.python.org/3/library/statistics.html)
+
+
+## NumPy
+- Numpy, which stands for Numerical Python, consists of more advanced math and logical operations. It's most
+  used attributes are its powerful n-dimensional arrays, and various numerical comuting tools.
+- imported with ```import numpy as np```
+- [numpy docs](https://numpy.org/doc/stable/user/quickstart.html)
+
+- Here's a little more detail about some of the cool stuff in ```numpy```:
+  - ndarray
+    - "n-dimensional array", each dimension is an "axis"
+    - ```numpy``` has TONS of array manipulation, slicing, indexing functionality (chandra will be demonstrating
+      some of this later :-) )
+  - ```arrange(start, stop, step)```
+    - Returns an ndarray of evenly spaced (by step) values, from start to stop
+  - Basic math functionality
+    - ```random()```, ```sin()```, ```cos()```, ```pi```, etc. etc. etc.
+
+
+## matplotlib
+- matplotlib is a library for creating graphs in Python
+- Basically, imagine you have control in some way of literally every single aspect of a graph you could ever think of,
+  and that's kind of where you're at with ```matplotlib```
+- I'll save the rest of this description for the demo! Most of it will become very self explanatory :)
+  
 ## Demo! (Numpy, Matplotlib, + more)
 
