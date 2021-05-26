@@ -174,4 +174,80 @@ y = [random.randrange(-10, 10) for i in range(0, len(x))]
 plt.title('Random', y=.96, fontsize=9)
 ```
 - Now, let's see how it looks.
-- 
+![Two Graphs](./part-1-numpy-matplotlib/assets/2graphs.png)
+
+- Awesome! Now, let's just make two more quick graphs to test out a couple other things.
+- For our third graph, we first have to initialize the third subplot, then our x:
+```
+plt.subplot(2, 2, 3) 
+t = np.arange(0., 5., 0.2)
+```
+- Now, let's demonstrate that we can show multiple lines on the same graph! 
+```
+plt.plot(t, t, 'r--')
+plt.plot(t, [math.pow(t, 2) for t in t], 'bs') 
+plt.plot(t, [math.pow(t, 3) for t in t], 'g^')
+plt.title('Cool Graph', y=.96, fontsize=9) 
+```
+- Here, we plot 3 lines. The first is just y = x. The third parameter, ```r--```, sets the color of the line to red (```r```), and makes the line's
+  style a dotted line (```--```). Our second line is going to be y = x^2, as you can see from our use of the math.pow(base, exponent) function. Here,
+  the third parameter sets the line color to blue, and the line style to squares. The third line, as we can see, is going to be y = x^3, and the third 
+  parameter means we're going to have a green line represented by triangles. 
+- I'm sure this seems like a lot of information, but remember, we are just trying to show you some of the capabilities of these libraries. You definitely
+  don't need to remember any of this, as you can always look at the documentation or look it up easily! Hopefully this just gives you an idea so that one day,
+  when you're thinking about a certain way to implement something in python, you can remember, "oh hey that one guy in that workshop mentioned *xyz* thing, 
+  let's look that up!"
+- Awesome. Let's check out this graph now:
+![Three Graphs](./part-1-numpy-matplotlib/assets/3graphs.png)
+
+- For our fourth graph, let's actually try to involve some data. I told you those libraries would be useful! First, let's initialize our subplot and generate
+  some random data sets:
+```
+plt.subplot(2, 2, 4) 
+data1 = [random.randrange(0, 15) for i in range(1, 10)]
+data2 = random.sample(range(0, 30), 10)
+data3 = [random.randint(0, 60) for i in range(1, 10)]
+```
+- As you will find out, the randrange function generates a random integer in the given range. The random sample function randomnly samples without replacement 
+  from a range or dataset. Finally, the randint function also returns a random integer in a given range. There are some subtle differences between randrange
+  and randint that I won't go over here, but if you are interested, you can find some info at this link: 
+  [difference between randint and randrange](https://stackoverflow.com/questions/3540431/what-is-the-difference-between-random-randint-and-randrange)
+- Now, for this one, we're going to create a bar graph! Let's first generate our bar titles to see what we are graphing:
+```x_axis = ['d1mean', 'd1med', 'd2mean', 'd2med', 'd3mean', 'd3med']```
+- As you can see, we're going to be graphing the mean and median of each of our data sets. Let's get right to it:
+- ```y_axis = [mean(data1), median(data1), mean(data2), median(data2), mean(data3), median(data3)]```
+- Now, lets graph away!
+```
+plt.bar(x_axis, y_axis)
+plt.title('Random Data', y=.96, fontsize=9)
+```
+![Ugly Graphs](./part-1-numpy-matplotlib/assets/ugly-graphs.png)
+- Woah, what the heck is that! Why are our x ticks all bunched up and ugly?
+- Well, everything is beautiful in its own way, but you're right, we should probably change that. We can easily do that by rotating our xticks before plotting:
+```plt.xticks(rotation=40)```
+- And now it will look perfect:
+![Four Graphs](./part-1-numpy-matplotlib/assets/4graphs.png)
+
+- We have done it! We now have four different graphs with various styles and data sets. Hopefully this servers as an example of literally just the tiniest 
+  of possibilities with matplotlib, there is so, so, so much more! 
+  
+  
+- Additionally, if you want to see the second demo I did during the workshop, where I go over some more graph beautifying with some *actual* data, check
+  out our recording on the acm youtube channel! 
+  - [Full recording will be in this playlist](https://www.youtube.com/playlist?list=PLPO7_kXilXFa1VwNhWRYGOokQORrIfi8G)
+  - If you'd rather do it yourself, I have you covered! All of the code from that demo is already in this repository, in the part 1 folder. The csv data is
+    there as well, but if you want to obtain it from it's source, here's some intructions on how to do so:
+      - Go to the Google trends website, in the search box, type "spongebob" into the search trend box, press enter, then type "paw patrol" into the comparison
+        box. 
+      - Then, if you want (it doesn't really matter), select "Worldwide" for location and "2004-present" for time period (this is what I did). 
+        - After that, you should be here: [spongebob vs paw patrol](https://trends.google.com/trends/explore?date=all&q=spongebob,paw%20patrol)
+      - Then, click the arrow in the top right corner to download the data as a csv file. 
+      - Move the file into a local project with your python file.
+      - Make sure to delete the top two rows of the csv file, for some reason Google Trends adds them and it messes everything up. I just did so by opening
+        up the file in a texteditor and manually deleting them. 
+      - Then, you should be good to go! Check out the file "spongebob_vs_paw.py" in the part 1 folder for all of the code that creates the graph.
+      - Here's a pretty awesome before-after:
+![original graph](./part-1-numpy-matplotlib/assets/original-graph.png)
+![Cooler Graph](./part-1-numpy-matplotlib/assets/cooler-graph.png)
+
+Thank you so much!!
