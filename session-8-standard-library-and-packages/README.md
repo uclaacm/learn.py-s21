@@ -134,4 +134,25 @@
 - I'll save the rest of this description for the demo! Most of it will become very self explanatory :)
   
 ## Demo! (Numpy, Matplotlib, + more)
+- Let's get started with some basic graphing! First, we need to add our imports:
+```
+import matplotlib.pyplot as plt
+import numpy as np
+import random
+import math
+from statistics import mean, median
+```
+- Let's start with someting super basic, like just graphing sin of x. We can begin by creating x and y:
+```
+x = np.arange(0.0, 2 * np.pi, .1)
+y = np.sin(x)
+```
+- For x, we generate a range between 0 and 2pi, with steps of .1. Then, for y, we just have a numpy array of 
+  the sin of all the x values.
+- From here, it's super easy! All we have to do is:
+```
+plt.plot(x, y)
+plt.title('Sine Graph', y=.96, fontsize=9)
+```
+which plots x and y, and adds a graph title (more on those weird parameters later). Now, lets run it and see our graph!
 
