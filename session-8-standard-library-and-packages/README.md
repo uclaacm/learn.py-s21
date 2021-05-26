@@ -20,10 +20,12 @@
   - [OpenCV](#opencv)
 
 ## A Couple Quick Library Shoutouts
+- [Quick Note](#quick-note)
 - [os](#os)
-- [glob](glob)
+- [glob](#glob)
 - [timeit](#timeit)
 - [Data Structures](#data-structures)
+## Quick Note
 ## os
 ## glob
 ## timit
