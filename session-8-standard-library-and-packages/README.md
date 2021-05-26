@@ -12,3 +12,14 @@
 - [ACM Membership Attendance Portal](https://members.uclaacm.com/login)
 
 ## What we'll be learning today <!-- omit in toc -->
+- [A Couple Quick Library Shoutouts](#a-couple-wuick-library-shoutouts)
+- [Preview Demo Libraries](#preview-demo-libraries)
+- [Demo!](#demo)
+- [More Standard Libraries!](#more-standard-libraries)
+  - [TensorFlow](#tensorflow)
+  - [OpenCV](#opencv)
+
+## A Couple Quick Library Shoutouts
+## Preview Demo Libraries
+## Demo! (Numpy, Matplotlib, + more)
+
