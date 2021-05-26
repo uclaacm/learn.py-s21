@@ -20,6 +20,15 @@
   - [OpenCV](#opencv)
 
 ## A Couple Quick Library Shoutouts
+- [os](#os)
+- [glob](glob)
+- [timeit](#timeit)
+- [Data Structures](#data-structures)
+## os
+## glob
+## timit
+## Data Structures
+
 ## Preview Demo Libraries
 ## Demo! (Numpy, Matplotlib, + more)
 
