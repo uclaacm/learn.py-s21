@@ -250,4 +250,37 @@ plt.title('Random Data', y=.96, fontsize=9)
 ![original graph](./part-1-numpy-matplotlib/assets/original-graph.png)
 ![Cooler Graph](./part-1-numpy-matplotlib/assets/cooler-graph.png)
 
+## sys
+- The sys library provides various functions/variables used to manipulate the Python runtime environment/interpreter
+- imported with ```import sys```
+- [sys docs](https://docs.python.org/3/library/sys.html)
+
+
+## argparse
+- The argpase library is used for more ~sophisticated~ of processing command line arguments than sys.argv()
+- imported with ```imported argparse```
+- [argparse docs](https://docs.python.org/3/library/argparse.html)
+
+
+## OpenCV 
+- OpenCV is Python’s very own a computer vision library. It is a huge open-source library for all things computer vision, machine learning, and image processing. You can use it for generating images, analyzing images, and much more! 
+- Many modern technologies you interact with everyday are powered by computer vision, and potentially OpenCV! This includes self driving cars, face detection software, and even tele-medicine!
+- imported with ```import cv2 as cv```
+- [cv docs](https://docs.opencv.org/master/d6/d00/tutorial_py_root.html)
+
+## TensorFlow 
+- TensorFlow is a python (and C++) machine learning library. It allows for (relatively) easy developing and training of ML models. Recently it has been integrated with Keras, which is a high-level neural network API, to make the library even easier to use.
+- Many modern technologies you interact with everyday are powered by computer vision, and potentially OpenCV! This includes self driving cars, face detection software, and even tele-medicine!
+- imported with ```import tensorflow as tf```
+- [tensorflow docs](https://www.tensorflow.org/tutorials)
+- Tensors are the bread of TensorFlow
+  -  Tensors are multi-dimensional arrays of elements that all have the same type
+  -  The rank of a tensor is its dimensionality
+- Flow is the butter of Tensorflow
+  -  A dataflow graph can be used to display the workings of a TF program.
+  -  Every edge in the graph is a Tensor, every node is an Operation, and the Tensors "flow" from one Operation to the next.
+  -  Below, we see an example of one such tensorflow program, being represented as a graphic of tensors flowing
+![TensorFlow](./part-1-tensorflow/assets/datflow.png)
+
+
 Thank you so much!!
