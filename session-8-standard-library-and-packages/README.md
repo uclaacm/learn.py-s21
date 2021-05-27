@@ -288,11 +288,11 @@ This means that we have a 512 by 256 pixel RGB image on our hands.
 
 ### Viewing our image
 Ok, so we have read in our image, done some fancy image processing on it, and now we want to see the fruits of our labour! In order to do so we must use OpenCV's image rendering command.
-'''
+```
 cv.imshow("This is my image display title', img)
 cv.waitKey(0)
 cv.destroyAllWindows()
-'''
+```
 The cv.imshow command is what actually displays the image, in a pop-up window. This function takes in two parameters: the name of the image display window, and the actual image np.array.
 We also have two mysterous function calls below. The cv.waitKey(0) function serves to stall our program so that we can take our time to admire our image without worrying about the rest of the program executing and eventually terminating (thereby closing our python display window). This function will only resume execution when a key on the keyboard is pressed. The next function cv.destroyAllWindows() is just to clean up the clutter on our desktop by closing our image display window. This is especially useful when we are running a large program that involves lots of image displaying.
 
@@ -301,31 +301,31 @@ We've seen all the alleged capabilities of OpenCV but lets actually get down and
 In this demo, our goal will be build a simple meme deep fryer. First, I'll give you a bit of background behind deep fried memes, that will help us in our openCV journey later. The first deep fried memes/images are satirizing the blurriness, low resolution, and high contrast of images/memes that are extensively reposted. Deep fried images are usually sharpened, red tinted, and contrasted to an absurdly high degree.
 In this demo, we will mimic these effects, using the power of OpenCV!
 First, lets go ahead and import the necessary libraries (please pip install these if you haven't already).
-'''
+```
 import cv2 as cv
 import numpy as np
-'''
+```
 Then, we can read in our image using the cv.imread command we learned about earlier.
-'''
+```
 src_img = cv.imread('./assets/bruhmoment.jpeg')
-'''
+```
 This is what our sample image looks like.
 ![Bruh Momentum Image](./part-2-opencv/assets/bruhmoment.jpeg)
 
 The first stage of our deep frying journey will be to dial the sharpness of our image up to 11.
-'''
+```
 img = src_img.copy()
 for i in range(10):
   frame = cv.GaussianBlur(img, (3,3), 13)
   img = cv.addWeighted(img, 1.5, frame, -0.5, 0)
-'''
+```
 We have two main functions of interest in the code snippet above, that get the sharpening job done. 
 The cv.GuassianBlur function, in effect rubs a (3,3) sized brush over our image img to blur it out. The third parameter dictates how much our blur decreases from the center versus the edges, but for the sake of the demo we can ignore it. 
 The next function cv.addWeighted, subtracts out our blurred image from our original image, and stores it back into the same variable. Intuitively, this aligns with what we expect a sharpened image to be: a regular image minus the blurry portions! The math checks out. 
 Then, we have a for loop that runs this piece of code 10 times where it uses the previous iterations output image as the input of the next iteration. This loop thoroughly sharpens our image into deep fried territory.
 
 We then want to add a classic deep fried red hue to our image. We can do this through the following code snippet.
-'''
+```
 contrast = 2.2
 brightness = 50
 b, g, r = cv.split(img)
@@ -333,24 +333,24 @@ r = r\*contrast + brightness
 r = r.astype(np.uint8)
 r = np.clip(r, 0, 255)
 img = cv.merge((b, g, r))
-'''
+```
 The general outline of this snippet is as follows. We split up our image using cv.split, into its three RGB channels. We do this, so that we can directly interact with only the red channel. Now to increase the contrast and brightness of the red in our image, we can simply scale it and shift it! Again, images are simply represented as np.arrays in OpenCV so we can directly mess around with the pixel values. We this cast our newly enhanced red image to an 8 bit integer (np.uint8). This is because OpenCV images come in two flavors: float values between 0 and 1, and integer values between 0 and 255. If we leave our image as float values between 0 and 255, then the our program won't work properly. Once we cast to int, we will clip the values in our array to only exist between 0 and 255 (since our scaling and shifting could have caused pixel values to exceed 255). Then, we merge the slices back into our img variable.
 
 Finally, we will redden and bolden the edges in our image to add some extra deep-fried pizzaz.
-'''
+```
 edges = cv.Canny(src_img, 50, 50)
 red_edges = np.zeros(img.shape)
 red_edges[:, :, 2] = edges
 red_edges = red_edges.astype(np.uint8)
 img = cv.addWeighted(img, 0.5, red_edges, 0.5, 0)
-'''
+```
 We use OpenCV's Canny edge detection function to find out where the edges are in our source image. The two parameters after the img parameter, determine the Canny function's threshold for what constitutes an image. We then construct an RGB image (since the output of the Canny function is a single channel black and white image), and set the red slice to be the edges. We then use the cv.addWeighted function we encountered earlier to combine the red edges with our original image.
 
 If we displayed our image now, we notice that it looks a bit dim. This is due to the addWeighted function where most of the image was black (except for the edges). To rectify this issue, we can just increase the contrast/brightness of our image with the following code.
-'''
+```
 img = img\*1.5 + 50
 img = img.astype(np.uint8)
-'''
+```
 We're done deep frying our image! Let's take a look at our work of art.
 ![Deep Fried Image](./part-2-opencv/assets/deepfried.png)
 
@@ -373,7 +373,7 @@ We're done deep frying our image! Let's take a look at our work of art.
 This is a very high level demo that illustrates an example of how machine learning can be used. We will be using the MNIST dataset of fashion/clothing to train and classify different types of clothing.
 This demo is in the form of a Jupyter notebook.
 1. Downlaod the jupyter notebook onto your computer
-2. Run '''python3 -m IPython notebook''' on your terminal, from the directory containing the notebook file.
+2. Run ```python3 -m IPython notebook``` on your terminal, from the directory containing the notebook file.
 3. Navigate to the file in the browser window that just opened.
 4. Open the file, and select "Run All"
 
