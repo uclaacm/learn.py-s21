@@ -250,6 +250,11 @@ plt.title('Random Data', y=.96, fontsize=9)
 ![original graph](./part-1-numpy-matplotlib/assets/original-graph.png)
 ![Cooler Graph](./part-1-numpy-matplotlib/assets/cooler-graph.png)
 
+## More Standard Libraries!
+- Lets go ahead and look at some more useful standard libraries!
+- [sys](#sys)
+- [argparse](#argparse)
+
 ## sys
 - The sys library provides various functions/variables used to manipulate the Python runtime environment/interpreter
 - imported with ```import sys```
