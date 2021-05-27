@@ -285,7 +285,7 @@ plt.title('Random Data', y=.96, fontsize=9)
   -  A dataflow graph can be used to display the workings of a TF program.
   -  Every edge in the graph is a Tensor, every node is an Operation, and the Tensors "flow" from one Operation to the next.
   -  Below, we see an example of one such tensorflow program, being represented as a graphic of tensors flowing
-![TensorFlow](./part-1-tensorflow/assets/datflow.png)
+![TensorFlow](./part-2-tensorflow/assets/tensors_flowing.gif)
 
 
 Thank you so much!!
