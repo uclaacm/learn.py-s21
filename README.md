@@ -15,7 +15,7 @@ learn<span>.</span>py is a weekly workshop series dedicated to teaching Python i
 - [Week 6: Web Scraping](https://github.com/uclaacm/learn.py-s21/tree/main/session-5-web-scraping)
 - [Week 7: Web Development](https://github.com/uclaacm/learn.py-s21/tree/main/session-6-web-development-1)
 - [Week 8: Web Development 2](https://github.com/uclaacm/learn.py-s21/tree/main/session-7-web-development-2)
-- Week 9: Standard Library and Packages
+- [Week 9: Standard Library and Packages](https://github.com/uclaacm/learn.py-s21/tree/main/session-8-standard-library-and-packages)
 
 ## Essential Links
 
